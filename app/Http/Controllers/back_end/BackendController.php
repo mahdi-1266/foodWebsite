@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\back_end;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Foods;
@@ -23,7 +22,6 @@ class BackendController extends Controller
 	public function createHeroSection(){
 		return view('admin.backend.hero-section.create');
 	}
-
 
 	public function storeHeroSection(Request $request){
 		$validated = $request->validate([
@@ -54,7 +52,6 @@ class BackendController extends Controller
 		heroSection::find($id)->delete();
 		return redirect()->route('heroSection');
 	}
-
 
 	public function editHeroSection($id){
 		$content = HeroSection::find($id);
@@ -185,7 +182,6 @@ class BackendController extends Controller
 	*/ 
 
 
-
 	/*
 		*************
 		******* Food Menu Section end *******
@@ -299,7 +295,6 @@ class BackendController extends Controller
 	*/ 
 
 
-
 	/*
 		*************
 		******* Story Section start *******
@@ -316,7 +311,7 @@ class BackendController extends Controller
 	public function storeStory(Request $request){
 		$validated = $request->validate([
 			'title' => ['required', 'string', 'max:100'],
-			'description' => ['required', 'string', 'max:100'],
+			'description' => ['required', 'string', 'max:250'],
 			'phone' => ['required', 'string', 'min:1'],
 			'photo1' => ['required', 'image', 'mimes:jpg,jpeg,png,gif', 'max:5120'],
 			'photo2' => ['required', 'image', 'mimes:jpg,jpeg,png,gif', 'max:5120'],
@@ -341,9 +336,14 @@ class BackendController extends Controller
 			'description' => $validated['description'],
 			'phone' => $validated['phone'],
 			'photo1' => $photo_done1,
-			'photo2' => $photo_done2
+			'photo2' => $photo_done2,
 		]);
 
+		return redirect()->route('story');
+	}
+
+	public function deleteStory($id){
+		Story::find($id)->delete();
 		return redirect()->route('story');
 	}
 	/*

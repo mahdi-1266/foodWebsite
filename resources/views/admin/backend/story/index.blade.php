@@ -49,7 +49,7 @@
                   </td>
                   
                   <td class="border">
-                    <a class="btn btn-danger btn-sm mb-1" href="">
+                    <a class="btn btn-danger btn-sm mb-1" href="{{ route('story.delete', $story->id) }}">
                       <i class="ri-delete-bin-line"></i>
                     </a>
                   </td>
