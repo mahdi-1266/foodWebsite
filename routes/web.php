@@ -57,7 +57,7 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 	// ============ Top offer section Route end ============
 
 
-	// ============ Offer section Route start ============
+	// ============ Story section Route start ============
 	Route::controller(BackendController::class)->group(function(){
 		Route::get('/story', 'story')->name('story');
 		Route::get('/create-story', 'createStory')->name('story.create');
@@ -66,7 +66,19 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 		Route::get('/edit-story/{id}', 'editStory')->name('story.edit');
 		Route::post('/update-story', 'updateStory')->name('story.update');
 	});
-	// ============ Offer section Route end ============
+	// ============ Story section Route end ============
+
+
+	// ============ special dishes section Route start ============
+	Route::controller(BackendController::class)->group(function(){
+		Route::get('/special-dishes', 'specialDishes')->name('specialDishes');
+		Route::get('/create-special-dishes', 'createSpecialDishes')->name('special-dishes.create');
+		Route::post('/store-special-dishes', 'storeSpecialDishes')->name('special-dishes.store');
+		Route::get('/delete-special-dishes/{id}', 'deleteSpecialDishes')->name('special-dishes.delete');
+		Route::get('/edit-special-dishes/{id}', 'editSpecialDishes')->name('special-dishes.edit');
+		Route::post('/update-special-dishes', 'updateSpecialDishes')->name('special-dishes.update');
+	});
+	// ============ special dishes section Route end ============
 
 
 	// ============ Food Menu Route Start ============

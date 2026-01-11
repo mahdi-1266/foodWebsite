@@ -57,9 +57,9 @@
 
 
 
-    <!-- 
-      - #SERVICE
-    -->
+    <!-- ************
+      ******* #SERVICE *******
+    ************ -->
 
     <section class="section service bg-black-10 text-center" aria-label="service">
       <div class="container">
@@ -69,8 +69,6 @@
         <h2 class="headline-1 section-title">We Offer Top Notch</h2>
 
         <p class="section-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry lorem Ipsum has been the industrys standard dummy text ever.</p>
-
-
         
         <ul class="grid-list">
           @php
@@ -89,28 +87,21 @@
                 </a>
 
                 <div class="card-content">
-
                   <h3 class="title-4 card-title">
                     <a href="#">{{ $offer->foodcategory }}</a>
                   </h3>
 
                   <a href="#" class="btn-text hover-underline label-2">{{ $offer->menu }}</a>
-
                 </div>
-
               </div>
             </li>
           @endforeach  
         </ul>
-        
-      
-        
 
         <img src="{{ asset('front-end/assets/images/shape-1.png'); }}" width="246" height="412" loading="lazy" alt="shape"
           class="shape shape-1 move-anim">
         <img src="{{ asset('front-end/assets/images/shape-2.png'); }}" width="343" height="345" loading="lazy" alt="shape"
           class="shape shape-2 move-anim">
-
       </div>
     </section>
 
@@ -120,96 +111,87 @@
     -->
 
     <section class="section about text-center" aria-labelledby="about-label" id="about">
-      <div class="container">
+      @php
+        $storys = App\Models\Story::get();
+      @endphp
 
-        <div class="about-content">
+      @foreach($storys as $story)
+        <div class="container">
+          <div class="about-content">
+            <p class="label-2 section-subtitle" id="about-label">Our Story</p>
 
-          <p class="label-2 section-subtitle" id="about-label">Our Story</p>
+            <h2 class="headline-1 section-title">{{ $story->title }}</h2>
 
-          <h2 class="headline-1 section-title">Every Fla vor Tells a Story</h2>
+            <p class="section-text">{{ $story->description }}</p>
 
-          <p class="section-text">
-            Lorem Ipsum is simply dummy text of the printingand typesetting industry lorem Ipsum has been the
-            industrys standard dummy text ever since the when an unknown printer took a galley of type and scrambled
-            it to make a type specimen book It has survived not only five centuries, but also the leap into.
-          </p>
+            <div class="contact-label">Book Through Call</div>
 
-          <div class="contact-label">Book Through Call</div>
+            <a href="tel:+804001234567" class="body-1 contact-number hover-underline">{{ $story->phone }}</a>
 
-          <a href="tel:+804001234567" class="body-1 contact-number hover-underline">+80 (400) 123 4567</a>
+            <a href="#" class="btn btn-primary">
+              <span class="text text-1">Read More</span>
+              <span class="text text-2" aria-hidden="true">Read More</span>
+            </a>
+          </div>
 
-          <a href="#" class="btn btn-primary">
-            <span class="text text-1">Read More</span>
-
-            <span class="text text-2" aria-hidden="true">Read More</span>
-          </a>
-
-        </div>
-
-        <figure class="about-banner">
-
-          <img src="{{ asset('front-end/assets/images/about-banner.jpg'); }}" width="570" height="570" loading="lazy" alt="about banner"
+          <figure class="about-banner">
+            <img src="{{ asset($story->photo1) }}" width="570" height="570" loading="lazy" alt="about banner"
             class="w-100" data-parallax-item data-parallax-speed="1">
 
-          <div class="abs-img abs-img-1 has-before" data-parallax-item data-parallax-speed="1.75">
-            <img src="{{ asset('front-end/assets/images/about-abs-image.jpg'); }}" width="285" height="285" loading="lazy" alt=""
+            <div class="abs-img abs-img-1 has-before" data-parallax-item data-parallax-speed="1.75">
+              <img src="{{ asset($story->photo2); }}" width="285" height="285" loading="lazy" alt=""
               class="w-100">
-          </div>
+            </div>
 
-          <div class="abs-img abs-img-2 has-before">
-            <img src="{{ asset('front-end/assets/images/badge-2.png'); }}" width="133" height="134" loading="lazy" alt="">
-          </div>
+            <div class="abs-img abs-img-2 has-before">
+              <img src="{{ asset('front-end/assets/images/badge-2.png'); }}" width="133" height="134" loading="lazy" alt="">
+            </div>
+          </figure>
 
-        </figure>
-
-        <img src="{{ asset('front-end/assets/images/shape-3.png'); }}" width="197" height="194" loading="lazy" alt="" class="shape">
-
-      </div>
+          <img src="{{ asset('front-end/assets/images/shape-3.png'); }}" width="197" height="194" loading="lazy" alt="" class="shape">
+        </div>
+      @endforeach
     </section>
-
-
-
-
 
     <!-- 
       - #SPECIAL DISH
     -->
-
     <section class="special-dish text-center" aria-labelledby="dish-label">
 
-      <div class="special-dish-banner">
-        <img src="{{ asset('front-end/assets/images/special-dish-banner.jpg'); }}" width="940" height="900" loading="lazy" alt="special dish"
+      @php
+        $dishes = App\Models\SpecialDish::get();
+      @endphp
+
+      @foreach($dishes as $dish)
+        <div class="special-dish-banner">
+          <img src="{{ asset($dish->photo) }}" width="940" height="900" loading="lazy" alt="special dish"
           class="img-cover">
-      </div>
-
-      <div class="special-dish-content bg-black-10">
-        <div class="container">
-
-          <img src="{{ asset('front-end/assets/images/badge-1.png'); }}" width="28" height="41" loading="lazy" alt="badge" class="abs-img">
-
-          <p class="section-subtitle label-2">Special Dish</p>
-
-          <h2 class="headline-1 section-title">Lobster Tortellini</h2>
-
-          <p class="section-text">
-            Lorem Ipsum is simply dummy text of the printingand typesetting industry lorem Ipsum has been the
-            industrys standard dummy text ever since the when an unknown printer took a galley of type.
-          </p>
-
-          <div class="wrapper">
-            <del class="del body-3">$40.00</del>
-
-            <span class="span body-1">$20.00</span>
-          </div>
-
-          <a href="#" class="btn btn-primary">
-            <span class="text text-1">View All Menu</span>
-
-            <span class="text text-2" aria-hidden="true">View All Menu</span>
-          </a>
-
         </div>
-      </div>
+
+        <div class="special-dish-content bg-black-10">
+          <div class="container">
+            <img src="{{ asset('front-end/assets/images/badge-1.png'); }}" width="28" height="41" loading="lazy" alt="badge" class="abs-img">
+
+            <p class="section-subtitle label-2">Special Dish</p>
+
+            <h2 class="headline-1 section-title">{{ $dish->title }}</h2>
+
+            <p class="section-text">{{ $dish->description }}</p>
+
+            <div class="wrapper">
+              <del class="del body-3">{{ '$'.$dish->old_price }}</del>
+
+              <span class="span body-1">{{ '$'.$dish->new_price }}</span>
+            </div>
+
+            <a href="#" class="btn btn-primary">
+              <span class="text text-1">View All Menu</span>
+              <span class="text text-2" aria-hidden="true">View All Menu</span>
+            </a>
+
+          </div>
+        </div>
+      @endforeach
 
       <img src="{{ asset('front-end/assets/images/shape-4.png'); }}" width="179" height="359" loading="lazy" alt="" class="shape shape-1">
 
@@ -279,10 +261,6 @@
 
       </div>
     </section>
-
-
-
-
 
     <!-- 
       - #TESTIMONIALS
@@ -442,10 +420,6 @@
 
       </div>
     </section>
-
-
-
-
 
     <!-- 
       - #FEATURES

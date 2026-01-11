@@ -7,6 +7,7 @@ use App\Models\Foods;
 use App\Models\HeroSection;
 use App\Models\TopOffer;
 use App\Models\Story;
+use App\Models\SpecialDish;
 
 class BackendController extends Controller
 {
@@ -349,6 +350,51 @@ class BackendController extends Controller
 	/*
 		*************
 		******* Story Section end *******
+		*************
+	*/ 
+
+
+	/*
+		*************
+		******* Special-Dishes Section start *******
+		*************
+	*/ 
+	public function specialDishes(){
+		return view('admin.backend.special-dishes.index');
+	}
+
+	public function createSpecialDishes(){
+		return view('admin.backend.special-dishes.create');
+	}
+
+	public function storeSpecialDishes(Request $request){
+		$validated = $request->validate([
+			'title' => ['required', 'string', 'max:100'],
+			'new_price' => ['required', 'numeric', 'max:100'],
+			'old_price' => ['required', 'numeric', 'max:100'],
+			'description' => ['required', 'string', 'max:250'],
+			'photo' => ['required', 'image', 'mimes:jpg,jpeg,png,gif', 'max:5120'],
+		]);
+
+		$photo = $request->file('photo');
+		$photo_name_gen = hexdec(uniqid()).'.'.$photo->getClientOriginalExtension();
+		$photo_path = 'upload/special-dishes/';
+		$photo->move(public_path($photo_path), $photo_name_gen);
+		$photo_done = $photo_path.$photo_name_gen;
+
+		SpecialDish::create([
+			'title' => $validated['title'],
+			'new_price' => $validated['new_price'],
+			'old_price' => $validated['old_price'],
+			'description' => $validated['description'],
+			'photo' => $photo_done,
+		]);
+
+		return redirect()->route('specialDishes');
+	}
+	/*
+		*************
+		******* Special-Dishes Section end *******
 		*************
 	*/ 
 }

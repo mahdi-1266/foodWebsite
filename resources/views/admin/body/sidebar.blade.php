@@ -31,6 +31,9 @@
           <li>
             <a href="{{ route('story'); }}">All Stories</a>
           </li>
+          <li>
+            <a href="{{ route('specialDishes'); }}">All Special Dishes</a>
+          </li>
         </ul>
       </li>
     </ul>
