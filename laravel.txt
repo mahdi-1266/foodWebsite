@@ -1,0 +1,11 @@
+LARAVEL PROJECT GUIDELINES
+1- Create our Laravel project.
+2- Install the breeze.
+3- We set the authentication for breeze. => AuthenticatedSessionController.php file
+
+
+
+
+QUESTIONS
+why no kernal file, 
+and no middleware folder and files.
