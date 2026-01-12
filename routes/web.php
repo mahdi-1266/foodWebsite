@@ -98,9 +98,9 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 		Route::get('/form', 'form')->name('form');
 		Route::get('/create-form', 'createform')->name('form.create');
 		Route::post('/store-form', 'storeForm')->name('form.store');
-		Route::get('/delete-form/{id}', 'deleteForm')->name('form.delete');
-		Route::get('/edit-form/{id}', 'editForm')->name('form.edit');
-		Route::post('/update-form', 'updateForm')->name('form.update');
+		// Route::get('/delete-form/{id}', 'deleteForm')->name('form.delete');
+		// Route::get('/edit-form/{id}', 'editForm')->name('form.edit');
+		// Route::post('/update-form', 'updateForm')->name('form.update');
 	});
 	// ============ Form Route End ============
 

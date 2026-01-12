@@ -507,4 +507,18 @@ class BackendController extends Controller
 		******* Special-Dishes Section end *******
 		*************
 	*/ 
+
+	/*
+		*************
+		******* Form Section end *******
+		*************
+	*/
+	public function form(){
+		return view('admin.backend.form.index');
+	}
+	/*
+		*************
+		******* Form Section end *******
+		*************
+	*/  
 }
