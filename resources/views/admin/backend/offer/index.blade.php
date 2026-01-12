@@ -3,7 +3,7 @@
 <div class="col-sm-12">
   <div class="card mb-3">
     <div class="card-header">
-      <h5 class="card-title">Default</h5>
+      <h5 class="card-title">Offer Table</h5>
     </div>
     <div class="card-body">
       <div class="table-outer">
@@ -42,7 +42,7 @@
                   </td>
                   
                   <td class="border">
-                    <a class="btn btn-danger btn-sm mb-1" href="{{ route('offers.delete', $offer->id) }}">
+                    <a class="btn btn-danger btn-sm mb-1" href="{{ route('story.delete', $offer->id) }}">
                       <i class="ri-delete-bin-line"></i>
                     </a>
                   </td>

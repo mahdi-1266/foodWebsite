@@ -34,6 +34,9 @@
           <li>
             <a href="{{ route('specialDishes'); }}">All Special Dishes</a>
           </li>
+          <li>
+            <a href="{{ route('form'); }}">Form</a>
+          </li>
         </ul>
       </li>
     </ul>

@@ -3,7 +3,7 @@
 <div class="col-sm-12">
   <div class="card mb-3">
     <div class="card-header">
-      <h5 class="card-title">Default</h5>
+      <h5 class="card-title">Special Dish Table</h5>
     </div>
     <div class="card-body">
       <div class="table-outer">
@@ -40,13 +40,13 @@
                   </td>
 
                   <td class="border">
-                    <a class="btn btn-info btn-sm" href="">
+                    <a class="btn btn-info btn-sm" href="{{ route('special-dishes.edit', $dish->id) }}">
                       <i class="ri-mark-pen-line"></i>
                     </a>
                   </td>
                   
                   <td class="border">
-                    <a class="btn btn-danger btn-sm mb-1" href="">
+                    <a class="btn btn-danger btn-sm mb-1" href="{{ route('special-dishes.delete', $dish->id) }}">
                       <i class="ri-delete-bin-line"></i>
                     </a>
                   </td>

@@ -3,7 +3,7 @@
 <div class="col-sm-12">
   <div class="card mb-3">
     <div class="card-header">
-      <h5 class="card-title">Default</h5>
+      <h5 class="card-title">Story Table</h5>
     </div>
     <div class="card-body">
       <div class="table-outer">
@@ -43,7 +43,7 @@
                   </td>
 
                   <td class="border">
-                    <a class="btn btn-info btn-sm" href="">
+                    <a class="btn btn-info btn-sm" href="{{ route('story.edit', $story->id) }}">
                       <i class="ri-mark-pen-line"></i>
                     </a>
                   </td>

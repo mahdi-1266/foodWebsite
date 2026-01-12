@@ -343,9 +343,72 @@ class BackendController extends Controller
 		return redirect()->route('story');
 	}
 
+	public function editStory($id){
+		$story = Story::find($id);
+		return view('admin.backend.story.edit', compact('story'));
+	}
+
 	public function deleteStory($id){
 		Story::find($id)->delete();
 		return redirect()->route('story');
+	}
+
+	public function updateStory(Request $request){
+		$storyId = $request->id;
+		$story = Story::findOrFail($storyId);
+
+		if($request->file('photo1')){
+			$old_photo1 = Story::find($storyId)->photo1;
+
+			if($old_photo1 && file_exists(public_path($old_photo1))){
+				unlink(public_path($old_photo1));
+			}
+
+			$photo1 = $request->file('photo1');
+			$photo1_name_gen = hexdec(uniqid()).'.'.$photo1->getClientOriginalExtension();
+			$photo1->move(public_path('upload/story/'), $photo1_name_gen);
+			$save_photo1_url = 'upload/story/'.$photo1_name_gen;
+
+			Story::find($storyId)->update([
+				'title' => $request->title,
+				'description' => $request->description,
+				'phone' => $request->phone,
+				'photo1' => $save_photo1_url,
+			]);
+
+			return redirect()->route('story');
+		}
+
+		if($request->file('photo2')){
+			$old_photo2 = Story::find($storyId)->photo2;
+
+			if($old_photo2 && file_exists(public_path($old_photo2))){
+				unlink(public_path($old_photo2));
+			}
+
+			$photo2 = $request->file('photo2');
+			$photo2_name_gen = hexdec(uniqid()).'.'.$photo2->getClientOriginalExtension();
+			$photo2->move(public_path('upload/story/'), $photo2_name_gen);
+			$save_photo2_url = 'upload/story/'.$photo2_name_gen;
+
+			Story::find($storyId)->update([
+				'title' => $request->title,
+				'description' => $request->description,
+				'phone' => $request->phone,
+				'photo2' => $save_photo2_url,
+			]);
+
+			return redirect()->route('story');
+		}
+		else{
+			Story::find($storyId)->update([
+				'title' => $request->title,
+				'description' => $request-> description,
+				'phone' => $request->phone,
+			]);
+
+			return redirect()->route('story');
+		}
 	}
 	/*
 		*************
@@ -390,6 +453,53 @@ class BackendController extends Controller
 			'photo' => $photo_done,
 		]);
 
+		return redirect()->route('specialDishes');
+	}
+
+	public function editSpecialDishes($id){
+		$special_dish = SpecialDish::find($id);
+		return view('admin.backend.special-dishes.edit', compact('special_dish'));
+	}
+
+	public function updateSpecialDishes(Request $request){
+		$special_dish_id = $request->id;
+		$special_dish = SpecialDish::findOrFail($special_dish_id);
+
+		if($request->file('photo')){
+			$old_photo = SpecialDish::find($special_dish_id)->photo;
+
+			if($old_photo && file_exists(public_path($old_photo))){
+				unlink(public_path($old_photo));
+			}
+
+			$photo = $request->file('photo');
+			$photo_name_gen = hexdec(uniqid()).'.'.$photo->getClientOriginalExtension();
+			$photo->move(public_path('upload/special-dishes/'), $photo_name_gen);
+			$save_photo_url = 'upload/special-dishes/'.$photo_name_gen;
+
+
+			SpecialDish::find($special_dish_id)->update([
+				'title' => $request->title,
+				'description' => $request->description,
+				'old_price' => $request->old_price,
+				'new_price' => $request->new_price,
+				'photo' => $save_photo_url,
+			]);
+			return redirect()->route('specialDishes');
+		}
+		else{
+			SpecialDish::find($special_dish_id)->update([
+				'title' => $request->title,
+				'description' => $request->description,
+				'old_price' => $request->old_price,
+				'new_price' => $request->new_price,
+			]);
+			return redirect()->route('specialDishes');
+		}
+	}
+
+	public function deleteSpecialDishes($id){
+		SpecialDish::find($id)->delete();
 		return redirect()->route('specialDishes');
 	}
 	/*

@@ -42,9 +42,10 @@
     </a>
 
     <div class="login-btn-container">
-      <a href="{{ route('allFoods'); }}" class="text-2 text">Login</a>
-      <a href="{{ route('register'); }}" class="text-2 text">Register</a>
+      <a href="{{ route('login'); }}" class="btn-hover"><span>Login</span></a>
+      <a href="{{ route('register'); }}" class="btn-hover"><span>Register</span></a>
     </div>
+
   </div>
 </div>
 
