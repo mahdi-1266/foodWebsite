@@ -37,6 +37,12 @@
           <li>
             <a href="{{ route('form'); }}">Form</a>
           </li>
+           <li>
+            <a href="{{ route('allChoice'); }}">All Choices</a>
+          </li>
+          <li>
+            <a href="{{ route('allevent'); }}">All Events</a>
+          </li>
         </ul>
       </li>
     </ul>

@@ -1755,6 +1755,14 @@ textarea.input-field {
     margin-inline: auto;
   }
 
+  .feature-item{
+    height: 250px;
+  }
+
+  .feature-card{
+    height: 100%;
+  }
+
 
 
   /**

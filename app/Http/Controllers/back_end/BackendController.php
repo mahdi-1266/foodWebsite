@@ -8,6 +8,9 @@ use App\Models\HeroSection;
 use App\Models\TopOffer;
 use App\Models\Story;
 use App\Models\SpecialDish;
+use App\Models\Form;
+use App\Models\ChooseUs;
+use App\Models\Event;
 
 class BackendController extends Controller
 {
@@ -510,15 +513,170 @@ class BackendController extends Controller
 
 	/*
 		*************
-		******* Form Section end *******
+		******* Choice Section start *******
 		*************
 	*/
-	public function form(){
-		return view('admin.backend.form.index');
+	public function allChoice(){
+		return view('admin.backend.choose-us.index');
+	}
+
+	public function createChoice(){
+		return view('admin.backend.choose-us.create');
+	}
+
+	public function storeChoice(Request $request){
+		$validated = $request->validate([
+			'title' => ['required', 'string', 'max:100'],
+			'photo' => ['required', 'image', 'mimes:jpg,jpeg,png,gif', 'max:5120'],
+			'description' => ['required', 'string', 'max:250'],
+		]);
+
+		$photo = $request->file('photo');
+		$photo_name_gen = hexdec(uniqid()).'.'.$photo->getClientOriginalExtension();
+		$photo_path = 'upload/choose-us/';
+		$photo->move(public_path('upload/choose-us/'), $photo_name_gen);
+		$photo_done = $photo_path.$photo_name_gen;
+
+		ChooseUs::create([
+			'title' => $validated['title'], 
+			'photo' => $photo_done,
+			'description' => $validated['description'],
+		]);
+
+		return redirect()->route('allChoice');
+	}
+
+	public function editChoice($id){
+		$choiceId = ChooseUs::find($id);
+		return view('admin.backend.choose-us.edit', compact('choiceId'));
+	}
+
+	public function updateChoice(Request $request){
+		$choiceId = $request->id;
+		$choice = SpecialDish::findOrFail($choiceId);
+
+		// to update the photo, first we have to take former photo url
+		if($request->file('photo')){
+			// we have to find the id of the former photo 
+			$old_photo = ChooseUs::find($choiceId)->photo;
+
+			if($old_photo && file_exists(public_path($old_photo))){
+				unlink(public_path($old_photo));
+			}
+
+			$photo = $request->file('photo');
+			$photo_name_gen = hexdec(uniqid()).'.'.$photo->getClientOriginalExtension();
+			$photo->move(public_path('upload/choose-us/'), $photo_name_gen);
+			$save_photo_url = 'upload/choose-us/'.$photo_name_gen;
+
+			ChooseUs::find($choiceId)->update([
+				'title' => $request->title,
+				'description' => $request->description,
+				'photo' => $save_photo_url,
+			]);
+
+			return redirect()->route('allChoice');
+		}
+		else{
+			ChooseUs::find($choiceId)->update([
+				'title' => $request->title,
+				'description' => $request->description, 
+			]);
+
+			return redirect()->route('allChoice');
+		}
 	}
 	/*
 		*************
-		******* Form Section end *******
+		******* Choice Section end *******
+		*************
+	*/ 
+	
+	
+	/*
+		*************
+		******* Event Section end *******
+		*************
+	*/  
+	public function allEvent(){
+		return view('admin.backend.event.index');
+	}
+
+	public function createEvent(){
+		return view('admin.backend.event.create');
+	}
+
+	public function storeEvent(Request $request){
+		$validated = $request->validate([
+			'date' =>['required'],
+			'text' =>['required', 'string', 'max:100'],
+			'photo' =>['required', 'image', 'mimes:jpg,jpeg,png,gif', 'max:5120'],
+			'description' =>['required', 'string', 'max:200'],
+		]);
+
+		$photo = $request->file('photo');
+		$photo_name_gen = hexdec(uniqid()).'.'.$photo->getClientOriginalExtension();
+		$photo_path = 'upload/event/';
+		$photo->move(public_path('upload/event/'), $photo_name_gen);
+		$photo_done = $photo_path.$photo_name_gen;
+
+		Event::create([
+			'date' => $validated['date'], 
+			'text' => $validated['text'], 
+			'photo' => $photo_done,
+			'description' => $validated['description'],
+		]);
+
+		return redirect()->route('allevent');
+	}
+
+	public function editEvent($id){
+		$event = Event::find($id);
+		return view('admin.backend.event.edit', compact('event'));
+	}
+
+	public function updateEvent(Request $request){
+		$eventId = $request->id;
+		// $event = SpecialDish::findOrFail($eventId);
+
+		if($request->file('photo')){
+			$old_photo = Event::find($eventId)->photo;
+
+			if($old_photo && file_exists(public_path($old_photo))){
+				unlink(public_path($old_photo));
+			}
+
+			$photo = $request->file('photo');
+			$photo_name_gen = hexdec(uniqid()).'.'.$photo->getClientOriginalExtension();
+			$photo->move(public_path('upload/event/'), $photo_name_gen);
+			$save_photo_url = 'upload/event/'.$photo_name_gen;
+
+			Event::find($eventId)->update([
+				'date' => $request->date,
+				'text' => $request->text,
+				'description' => $request->description,
+				'photo' => $save_photo_url,
+			]);
+
+			return redirect()->route('allevent');
+		}
+		else{
+			Event::find($eventId)->update([
+				'date' => $request->date,
+				'text' => $request->text,
+				'description' => $request->description,
+			]);
+			return redirect()->route('allevent');
+		}
+	}
+
+	public function deleteEvent($id){
+		Event::find($id)->delete();
+		return redirect()->route('allevent');
+	}
+	/*
+		*************
+		******* Event Section end *******
 		*************
 	*/  
 }

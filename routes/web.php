@@ -94,15 +94,35 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 
 
 	// ============ Form Route Start ============
-	Route::controller(BackendController::class)->group(function () {
+	Route::controller(FrontendController::class)->group(function () {
 		Route::get('/form', 'form')->name('form');
 		Route::get('/create-form', 'createform')->name('form.create');
 		Route::post('/store-form', 'storeForm')->name('form.store');
-		// Route::get('/delete-form/{id}', 'deleteForm')->name('form.delete');
-		// Route::get('/edit-form/{id}', 'editForm')->name('form.edit');
-		// Route::post('/update-form', 'updateForm')->name('form.update');
+		Route::get('/delete-form/{id}', 'deleteForm')->name('form.delete');
 	});
 	// ============ Form Route End ============
+
+	// ============ Choose us Route Start ============
+	Route::controller(BackendController::class)->group(function () {
+		Route::get('/all-choice', 'allchoice')->name('allChoice');
+		Route::get('/create-choice', 'createChoice')->name('choice.create');
+		Route::post('/store-choice', 'storeChoice')->name('choice.store');
+		Route::get('/delete-choice/{id}', 'deleteChoice')->name('choice.delete');
+		Route::get('/edit-choice/{id}', 'editChoice')->name('choice.edit');
+		Route::post('/update-choice', 'updateChoice')->name('choice.update');
+	});
+	// ============ Choose us Route End ============
+
+		// ============ Event Route Start ============
+	Route::controller(BackendController::class)->group(function () {
+		Route::get('/all-event', 'allEvent')->name('allevent');
+		Route::get('/create-event', 'createEvent')->name('event.create');
+		Route::post('/store-event', 'storeEvent')->name('event.store');
+		Route::get('/delete-event/{id}', 'deleteEvent')->name('event.delete');
+		Route::get('/edit-event/{id}', 'editEvent')->name('event.edit');
+		Route::post('/update-event', 'updateEvent')->name('event.update');
+	});
+	// ============ Event Route End ============
 
 });
 

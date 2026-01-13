@@ -292,11 +292,7 @@
 
       </div>
     </section>
-
-
-
-
-
+    
     <!-- 
       - #RESERVATION
     -->
@@ -306,8 +302,8 @@
 
         <div class="form reservation-form bg-black-10">
 
-          <form action="" class="form-left">
-
+          <form action="{{ route('form.store') }}" method='POST' class="form-left">
+            @csrf
             <h2 class="headline-1 text-center">Online Reservation</h2>
 
             <p class="form-text text-center">
@@ -316,9 +312,10 @@
             </p>
 
             <div class="input-wrapper">
-              <input type="text" name="name" placeholder="Your Name" autocomplete="off" class="input-field">
 
-              <input type="tel" name="phone" placeholder="Phone Number" autocomplete="off" class="input-field">
+              <input type="text" name="name" placeholder="Your Name" class="input-field" required>
+
+              <input type="tel" name="phone" placeholder="Phone Number" class="input-field" required>
             </div>
 
             <div class="input-wrapper">
@@ -326,14 +323,14 @@
               <div class="icon-wrapper">
                 <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
 
-                <select name="person" class="input-field">
-                  <option value="1-person">1 Person</option>
-                  <option value="2-person">2 Person</option>
-                  <option value="3-person">3 Person</option>
-                  <option value="4-person">4 Person</option>
-                  <option value="5-person">5 Person</option>
-                  <option value="6-person">6 Person</option>
-                  <option value="7-person">7 Person</option>
+                <select name="customer_qty" class="input-field">
+                  <option value="1">1 Person</option>
+                  <option value="2">2 Person</option>
+                  <option value="3">3 Person</option>
+                  <option value="4">4 Person</option>
+                  <option value="5">5 Person</option>
+                  <option value="6">6 Person</option>
+                  <option value="7">7 Person</option>
                 </select>
 
                 <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
@@ -342,7 +339,7 @@
               <div class="icon-wrapper">
                 <ion-icon name="calendar-clear-outline" aria-hidden="true"></ion-icon>
 
-                <input type="date" name="reservation-date" class="input-field">
+                <input type="date" name="reservation_date" class="input-field">
 
                 <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
               </div>
@@ -350,22 +347,22 @@
               <div class="icon-wrapper">
                 <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
 
-                <select name="person" class="input-field">
-                  <option value="08:00am">08 : 00 am</option>
-                  <option value="09:00am">09 : 00 am</option>
-                  <option value="010:00am">10 : 00 am</option>
-                  <option value="011:00am">11 : 00 am</option>
-                  <option value="012:00am">12 : 00 am</option>
-                  <option value="01:00pm">01 : 00 pm</option>
-                  <option value="02:00pm">02 : 00 pm</option>
-                  <option value="03:00pm">03 : 00 pm</option>
-                  <option value="04:00pm">04 : 00 pm</option>
-                  <option value="05:00pm">05 : 00 pm</option>
-                  <option value="06:00pm">06 : 00 pm</option>
-                  <option value="07:00pm">07 : 00 pm</option>
-                  <option value="08:00pm">08 : 00 pm</option>
-                  <option value="09:00pm">09 : 00 pm</option>
-                  <option value="10:00pm">10 : 00 pm</option>
+                <select name="time" class="input-field">
+                  <option value="08:00:00">08 : 00 am</option>
+                  <option value="09:00:00">09 : 00 am</option>
+                  <option value="10:00:00">10 : 00 am</option>
+                  <option value="11:00:00">11 : 00 am</option>
+                  <option value="12:00:00">12 : 00 am</option>
+                  <option value="01:00:00">01 : 00 pm</option>
+                  <option value="02:00:00">02 : 00 pm</option>
+                  <option value="03:00:00">03 : 00 pm</option>
+                  <option value="04:00:00">04 : 00 pm</option>
+                  <option value="05:00:00">05 : 00 pm</option>
+                  <option value="06:00:00">06 : 00 pm</option>
+                  <option value="07:00:00">07 : 00 pm</option>
+                  <option value="08:00:00">08 : 00 pm</option>
+                  <option value="09:00:00">09 : 00 pm</option>
+                  <option value="10:00:00">10 : 00 pm</option>
                 </select>
 
                 <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
@@ -373,7 +370,7 @@
 
             </div>
 
-            <textarea name="message" placeholder="Message" autocomplete="off" class="input-field"></textarea>
+            <textarea name="message" placeholder="Message" class="input-field" required></textarea>
 
             <button type="submit" class="btn btn-secondary">
               <span class="text text-1">Book A Table</span>
@@ -430,67 +427,29 @@
 
         <p class="section-subtitle label-2">Why Choose Us</p>
 
-        <h2 class="headline-1 section-title">Our Strength</h2>
+        @php
+          $choices = App\Models\ChooseUs::get();
+        @endphp
 
-        <ul class="grid-list">
+        
+          <h2 class="headline-1 section-title">Our Strength</h2>
 
-          <li class="feature-item">
-            <div class="feature-card">
+          <ul class="grid-list">
+            @foreach($choices as $choice)
+            <li class="feature-item">
+              <div class="feature-card">
+                <div class="card-icon">
+                  <img src="{{ asset($choice->photo); }}" width="100" height="80" loading="lazy" alt="icon">
+                </div>
 
-              <div class="card-icon">
-                <img src="{{ asset('front-end/assets/images/features-icon-1.png'); }}" width="100" height="80" loading="lazy" alt="icon">
+                <h3 class="title-2 card-title">{{ $choice->title }}</h3>
+
+                <p class="label-1 card-text">{{ $choice->description }}</p>
               </div>
-
-              <h3 class="title-2 card-title">Hygienic Food</h3>
-
-              <p class="label-1 card-text">Lorem Ipsum is simply dummy printing and typesetting.</p>
-
-            </div>
-          </li>
-
-          <li class="feature-item">
-            <div class="feature-card">
-
-              <div class="card-icon">
-                <img src="{{ asset('front-end/assets/images/features-icon-2.png'); }}" width="100" height="80" loading="lazy" alt="icon">
-              </div>
-
-              <h3 class="title-2 card-title">Fresh Environment</h3>
-
-              <p class="label-1 card-text">Lorem Ipsum is simply dummy printing and typesetting.</p>
-
-            </div>
-          </li>
-
-          <li class="feature-item">
-            <div class="feature-card">
-
-              <div class="card-icon">
-                <img src="{{ asset('front-end/assets/images/features-icon-3.png'); }}" width="100" height="80" loading="lazy" alt="icon">
-              </div>
-
-              <h3 class="title-2 card-title">Skilled Chefs</h3>
-
-              <p class="label-1 card-text">Lorem Ipsum is simply dummy printing and typesetting.</p>
-
-            </div>
-          </li>
-
-          <li class="feature-item">
-            <div class="feature-card">
-
-              <div class="card-icon">
-                <img src="{{ asset('front-end/assets/images/features-icon-4.png'); }}" width="100" height="80" loading="lazy" alt="icon">
-              </div>
-
-              <h3 class="title-2 card-title">Event & Party</h3>
-
-              <p class="label-1 card-text">Lorem Ipsum is simply dummy printing and typesetting.</p>
-
-            </div>
-          </li>
-
-        </ul>
+            </li>
+           @endforeach 
+          </ul>
+        
 
         <img src="{{ asset('front-end/assets/images/shape-7.png'); }}" width="208" height="178" loading="lazy" alt="shape"
           class="shape shape-1">
@@ -514,74 +473,34 @@
 
         <p class="section-subtitle label-2 text-center">Recent Updates</p>
 
+        @php
+          $events = App\Models\Event::get();
+        @endphp
+
         <h2 class="section-title headline-1 text-center">Upcoming Event</h2>
 
-        <ul class="grid-list">
+          <ul class="grid-list">
+            @foreach($events as $event)
+              <li>
+                <div class="event-card has-before hover:shine">
 
-          <li>
-            <div class="event-card has-before hover:shine">
+                  <div class="card-banner img-holder" style="--width: 350; --height: 450;">
+                    <img src="{{ asset($event->photo) }}" width="350" height="450" loading="lazy"
+                      alt="Flavour so good you’ll try to eat with your eyes." class="img-cover">
 
-              <div class="card-banner img-holder" style="--width: 350; --height: 450;">
-                <img src="{{ asset('front-end/assets/images/event-1.jpg'); }}" width="350" height="450" loading="lazy"
-                  alt="Flavour so good you’ll try to eat with your eyes." class="img-cover">
+                    <time class="publish-date label-2" datetime="2022-09-15">{{ $event->date }}</time>
+                  </div>
 
-                <time class="publish-date label-2" datetime="2022-09-15">15/09/2022</time>
-              </div>
+                  <div class="card-content">
+                    <p class="card-subtitle label-2 text-center">{{ $event->text }}</p>
 
-              <div class="card-content">
-                <p class="card-subtitle label-2 text-center">Food, Flavour</p>
-
-                <h3 class="card-title title-2 text-center">
-                  Flavour so good you’ll try to eat with your eyes.
-                </h3>
-              </div>
-
-            </div>
-          </li>
-
-          <li>
-            <div class="event-card has-before hover:shine">
-
-              <div class="card-banner img-holder" style="--width: 350; --height: 450;">
-                <img src="{{ asset('front-end/assets/images/event-2.jpg'); }}" width="350" height="450" loading="lazy"
-                  alt="Flavour so good you’ll try to eat with your eyes." class="img-cover">
-
-                <time class="publish-date label-2" datetime="2022-09-08">08/09/2022</time>
-              </div>
-
-              <div class="card-content">
-                <p class="card-subtitle label-2 text-center">Healthy Food</p>
-
-                <h3 class="card-title title-2 text-center">
-                  Flavour so good you’ll try to eat with your eyes.
-                </h3>
-              </div>
-
-            </div>
-          </li>
-
-          <li>
-            <div class="event-card has-before hover:shine">
-
-              <div class="card-banner img-holder" style="--width: 350; --height: 450;">
-                <img src="{{ asset('front-end/assets/images/event-3.jpg'); }}" width="350" height="450" loading="lazy"
-                  alt="Flavour so good you’ll try to eat with your eyes." class="img-cover">
-
-                <time class="publish-date label-2" datetime="2022-09-03">03/09/2022</time>
-              </div>
-
-              <div class="card-content">
-                <p class="card-subtitle label-2 text-center">Recipie</p>
-
-                <h3 class="card-title title-2 text-center">
-                  Flavour so good you’ll try to eat with your eyes.
-                </h3>
-              </div>
-
-            </div>
-          </li>
-
-        </ul>
+                    <h3 class="card-title title-2 text-center">{{ $event->description }}</h3>
+                  </div>
+                </div>
+              </li>
+            @endforeach  
+          </ul>
+        
 
         <a href="#" class="btn btn-primary">
           <span class="text text-1">View Our Blog</span>
