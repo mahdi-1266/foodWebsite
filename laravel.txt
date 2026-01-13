@@ -7,5 +7,130 @@ LARAVEL PROJECT GUIDELINES
 
 
 QUESTIONS
-why no kernal file, 
+why no kernal file,
 and no middleware folder and files.
+
+
+
+
+1- student.balde.php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .parent{
+      height: 100vh;
+    }
+  </style>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+
+
+  <div class="parent w-100 d-flex justify-content-center align-items-center">
+    <div class="container p-5">
+      <div class="">
+
+          <div class="border border-2 p-4 w-50 m-auto rounded-2">
+            <!-- === showing an alert message when the student is added successfully === -->
+            @if(session('success'))
+              <div class="alert alert-success text-center">
+                  {{ session('success') }}
+              </div>
+            @endif
+
+
+
+            <form class="" action="{{ route('store-student') }}" method="post">
+              @csrf
+              <div class="mb-3">
+                <label class="form-label">Name:</label>
+                <input type="text" class="form-control" name="name" placeholder="Enter student name">
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Last Name:</label>
+                <input type="text" class="form-control" name="last_name" placeholder="Enter student last name">
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Class:</label>
+                <input type="text" class="form-control" name="class" placeholder="Enter student class">
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Email:</label>
+                <input type="email" class="form-control" name="email" placeholder="Enter student email">
+              </div>
+
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
+
+2- student.php model file
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Student extends Model
+{
+    protected $fillable = [
+        'name',
+        'last_name',
+        'class',
+        'email',
+    ];
+
+}
+
+3- studentcontroller file
+<?php
+
+namespace App\Http\Controllers;
+use App\Models\Student;
+use Illuminate\Http\Request;
+
+class StudentController extends Controller
+{
+    public function student(){
+        return view('student');
+    }
+
+
+    public function store_student(Request $request){
+
+    $validated = $request->validate([
+        'name' => 'required|string|max:20',
+        'last_name' => 'required|string|max:20',
+        'class' => 'required|string|max:20',
+        'email' => 'required|email|unique:students,email',
+    ]);
+
+    Student::create([
+        'name' => $validated['name'],
+        'last_name' => $validated['last_name'],
+        'class'     => $validated['class'],
+        'email'     => $validated['email'],
+    ]);
+
+    return redirect()->route('student')->with('success', 'Student inserted successfully!');
+}
+
+}
+
+student routes
+Route::get('/student', [StudentController::class, 'student'])->name('student');
+Route::post('/store-student', [StudentController::class, 'store_student'])->name('store-student');

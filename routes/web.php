@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\back_end\BackendController;
 use App\Http\Controllers\front_end\FrontendController;
+use App\Http\Controllers\StudentController;
 
 Route::get('/', function () {
 		return view('welcome');
@@ -125,6 +126,8 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 	// ============ Event Route End ============
 
 });
+
+
 
 
 
