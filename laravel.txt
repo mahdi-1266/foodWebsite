@@ -2,7 +2,11 @@ LARAVEL PROJECT GUIDELINES
 1- Create our Laravel project.
 2- Install the breeze.
 3- We set the authentication for breeze. => AuthenticatedSessionController.php file
-
+4- We set the seeder file admin and user.
+5- To do the CRUD operation, we need three files, index, create and edit.
+6- In Route file, we need the following routes, home, create, store, edit, update and delete.
+Note: In edit and delete routes, we need to pass the id.
+7- In Controller file, again we need the following functions, home, create, store, edit, update and delete.
 
 
 

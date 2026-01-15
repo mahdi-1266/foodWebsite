@@ -6,19 +6,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- 
+  <!--
     - primary meta tags
   -->
   <title>Grilli - Amazing & Delicious Food</title>
   <meta name="title" content="Grilli - Amazing & Delicious Food">
   <meta name="description" content="This is a Restaurant html template made by codewithsadee">
 
-  <!-- 
+  <!--
     - favicon
-  --> 
+  -->
   <link rel="shortcut icon" href="{{ asset('front-end/assets/images/favicon.svg'); }}" type="image/svg+xml">
 
-  <!-- 
+  <!--
     - google font link
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,7 +29,7 @@
   ******* custom css link ******* -->
   <link rel="stylesheet" href="{{ asset('front-end/assets/css/style.css'); }}">
 
-  <!-- ********* 
+  <!-- *********
     ******* #PRELOADER IMAGES *******
   ********** -->
   <link rel="preload" as="image" href="{{ asset('front-end/assets/images/hero-slider-1.jpg'); }}">
@@ -38,30 +38,30 @@
 </head>
 <body id="top">
 
-  <!-- ********* 
-    ******* #PRELOADER *******
-  ********** -->
-  <div class="preload" data-preaload>
-    <div class="circle"></div>
-    <p class="text">Grilli</p>
-  </div>
+    <!-- *********
+        ******* #PRELOADER *******
+    ********** -->
+    <div class="preload" data-preaload>
+        <div class="circle"></div>
+        <p class="text">Grilli</p>
+    </div>
 
-  <!-- ********* header section start ********** -->
-  @include('frontend.body.header')
-  <!-- ********* header section end ********** -->
-
-  
-  <!-- ********** main body section start ********* -->
-  @yield('frontend')
-  <!-- ********** main body section end ********* -->
+    <!-- ********* header section start ********** -->
+    @include('frontend.body.header')
+    <!-- ********* header section end ********** -->
 
 
-  <!-- ********** footer section start ********* -->
-  @include('frontend.body.footer')
-  <!-- ********** footer section end ********* -->
+    <!-- ********** main body section start ********* -->
+    @yield('frontend')
+    <!-- ********** main body section end ********* -->
 
 
-  <!-- ********** 
+    <!-- ********** footer section start ********* -->
+    @include('frontend.body.footer')
+    <!-- ********** footer section end ********* -->
+
+
+  <!-- **********
    ***** BACK TO TOP *****
   ********* -->
   <a href="#top" class="back-top-btn active" aria-label="back to top" data-back-top-btn>

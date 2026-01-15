@@ -2,7 +2,7 @@
 @section('frontend')
 <main>
   <article>
-    <!-- 
+    <!--
       - #HERO
     -->
 
@@ -69,7 +69,7 @@
         <h2 class="headline-1 section-title">We Offer Top Notch</h2>
 
         <p class="section-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry lorem Ipsum has been the industrys standard dummy text ever.</p>
-        
+
         <ul class="grid-list">
           @php
             $offers = App\Models\TopOffer::get();
@@ -95,7 +95,7 @@
                 </div>
               </div>
             </li>
-          @endforeach  
+          @endforeach
         </ul>
 
         <img src="{{ asset('front-end/assets/images/shape-1.png'); }}" width="246" height="412" loading="lazy" alt="shape"
@@ -106,7 +106,7 @@
     </section>
 
 
-    <!-- 
+    <!--
       - #ABOUT
     -->
 
@@ -153,7 +153,7 @@
       @endforeach
     </section>
 
-    <!-- 
+    <!--
       - #SPECIAL DISH
     -->
     <section class="special-dish text-center" aria-labelledby="dish-label">
@@ -199,7 +199,7 @@
 
     </section>
 
-    <!-- 
+    <!--
       - #MENU
     -->
 
@@ -225,23 +225,23 @@
                 </figure>
 
                 <div>
-                  <div class="title-wrapper">
-                    <h3 class="title-3">
-                      <a href="#" class="card-title">{{ $food->name }}</a>
-                    </h3>
+                    <div class="title-wrapper">
+                        <h3 class="title-3">
+                        <a href="#" class="card-title">{{ $food->name }}</a>
+                        </h3>
 
-                    <span class="span title-2">{{ '$'.$food->price }}</span>
-                  </div>
+                        <span class="span title-2">{{ '$'.$food->price }}</span>
+                    </div>
 
-                  <p class="card-text label-1">{{ $food->description }}</p>
+                    <p class="card-text label-1">{{ $food->description }}</p>
+
+                    <a href="{{ route('order') }}" target="__blank" class="order-btn">
+                        <span>Order Now</span>
+                    </a>
                 </div>
               </div>
           </li>
           @endforeach
-
-          
-
-
         </ul>
 
         <p class="menu-text text-center">
@@ -262,7 +262,7 @@
       </div>
     </section>
 
-    <!-- 
+    <!--
       - #TESTIMONIALS
     -->
 
@@ -292,8 +292,8 @@
 
       </div>
     </section>
-    
-    <!-- 
+
+    <!--
       - #RESERVATION
     -->
 
@@ -418,7 +418,7 @@
       </div>
     </section>
 
-    <!-- 
+    <!--
       - #FEATURES
     -->
 
@@ -431,7 +431,7 @@
           $choices = App\Models\ChooseUs::get();
         @endphp
 
-        
+
           <h2 class="headline-1 section-title">Our Strength</h2>
 
           <ul class="grid-list">
@@ -447,9 +447,9 @@
                 <p class="label-1 card-text">{{ $choice->description }}</p>
               </div>
             </li>
-           @endforeach 
+           @endforeach
           </ul>
-        
+
 
         <img src="{{ asset('front-end/assets/images/shape-7.png'); }}" width="208" height="178" loading="lazy" alt="shape"
           class="shape shape-1">
@@ -464,7 +464,7 @@
 
 
 
-    <!-- 
+    <!--
       - #EVENT
     -->
 
@@ -498,9 +498,9 @@
                   </div>
                 </div>
               </li>
-            @endforeach  
+            @endforeach
           </ul>
-        
+
 
         <a href="#" class="btn btn-primary">
           <span class="text text-1">View Our Blog</span>

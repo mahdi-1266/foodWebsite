@@ -6,7 +6,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\back_end\BackendController;
 use App\Http\Controllers\front_end\FrontendController;
-use App\Http\Controllers\StudentController;
+
 
 Route::get('/', function () {
 		return view('welcome');
@@ -115,7 +115,7 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 	// ============ Choose us Route End ============
 
 		// ============ Event Route Start ============
-	Route::controller(BackendController::class)->group(function () {
+	Route::controller(BackendController::class)->group(function(){
 		Route::get('/all-event', 'allEvent')->name('allevent');
 		Route::get('/create-event', 'createEvent')->name('event.create');
 		Route::post('/store-event', 'storeEvent')->name('event.store');
@@ -125,6 +125,12 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 	});
 	// ============ Event Route End ============
 
+
+	// ============ Order Page Route Start ============
+    Route::controller(FrontendController::class)->group(function(){
+        Route::get('/order', 'order')->name('order');
+    });
+	// ============ Order Page Route End ============
 });
 
 

@@ -2,7 +2,7 @@
 @section('dashboard-body')
 <!-- App body starts -->
 <div class="app-body w-50 mx-auto mt-4 border border-2">
-  <h5 class="mb-3">Add Product</h5>
+  <h5 class="mb-3">Edit Hero Section</h5>
   <form action="{{ route('update.hero.section'); }}" method="post" enctype="multipart/form-data">
     @csrf
     <!-- Row starts -->
@@ -28,7 +28,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="col-sm-6 col-12">
         <div class="card">
           <div class="card-body">
@@ -45,7 +45,7 @@
           <div class="card-body">
             <div class="m-0">
               <label class="form-label" for="abc6">Hero Description</label>
-              <textarea class="form-control" name="description" rows="3">{{ $content->text }}</textarea>
+              <textarea class="form-control" name="description" rows="3">{{ $content->description }}</textarea>
             </div>
           </div>
         </div>
