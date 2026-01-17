@@ -17,24 +17,13 @@
           </div>
         </div>
       </div>
-      
+
       <div class="col-sm-6 col-12">
         <div class="card">
           <div class="card-body">
             <div class="m-0">
               <label class="form-label" for="abc">Food Image</label>
               <input type="file" name='foodImg' class="form-control" id="abc">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6 col-12">
-        <div class="card">
-          <div class="card-body">
-            <div class="m-0">
-              <label class="form-label" for="abc">Food Quantity</label>
-              <input type="number" class="form-control" name="foodQuantity" placeholder="Enter the quantity">
             </div>
           </div>
         </div>

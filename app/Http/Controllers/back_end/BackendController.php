@@ -8,7 +8,6 @@ use App\Models\HeroSection;
 use App\Models\TopOffer;
 use App\Models\Story;
 use App\Models\SpecialDish;
-use App\Models\Form;
 use App\Models\ChooseUs;
 use App\Models\Event;
 
@@ -98,14 +97,14 @@ class BackendController extends Controller
 		*************
 		******* Hero Section Controller end *******
 		*************
-	*/ 
+	*/
 
 
 	/*
 		*************
 		******* Offer Section Controller end *******
 		*************
-	*/ 
+	*/
 	public function offers(){
 		return view('admin.backend.offer.index');
 	}
@@ -117,8 +116,7 @@ class BackendController extends Controller
 	public function storeOffer(Request $request){
 		$validated = $request->validate([
 			'photo' => ['required', 'image', 'mimes:jpg,jpeg,png,gif', 'max:5120'],
-			'offercategory' => ['required', 'string', 'max:100'],
-			'menu' => ['required', 'string', 'max:100']
+			'food_category' => ['required', 'string', 'max:100'],
 		]);
 
 		$photo = $request->file('photo');
@@ -127,11 +125,10 @@ class BackendController extends Controller
 		$photo->move(public_path($photo_path), $photo_name_gen);
 		$photo_done = $photo_path.$photo_name_gen;
 
-		TopOffer::insert([
-			'photo' => $photo_done,
-			'foodcategory' => $validated['offercategory'],
-			'menu' => $validated['menu'],
-		]);
+		TopOffer::create([
+      'photo' => $photo_done,
+      'food_category' => $validated['food_category'],
+    ]);
 
 		return redirect()->route('offers');
 	}
@@ -148,7 +145,7 @@ class BackendController extends Controller
 
 	public function updateOffer(Request $request){
 		$offerId = $request->id;
-		$offer = TopOffer::findOrFail($offerId);
+		// $offer = TopOffer::findOrFail($offerId);
 
 
 		if($request->file('photo')){
@@ -160,19 +157,18 @@ class BackendController extends Controller
 
 			$photo = $request->file('photo');
 			$photo_name_gen = hexdec(uniqid()).'.'.$photo->getClientOriginalExtension();
-			$photo_path = 'upload/offer/';
 			$photo->move(public_path('upload/offer/'), $photo_name_gen);
 			$photo_save_url = 'upload/offer/'.$photo_name_gen;
 
 			TopOffer::find($offerId)->update([
-				'photo' => $photo_save_url
+				'photo' => $photo_save_url,
+        'food_category' => $request->food_category,
 			]);
 			return redirect()->route('offers');
 		}
 		else{
 			TopOffer::find($offerId)->update([
-				'foodcategory' => $request->offercategory,
-				'menu' => $request->menu
+				'food_category' => $request->food_category,
 			]);
 
 			return redirect()->route('offers');
@@ -183,14 +179,14 @@ class BackendController extends Controller
 		*************
 		******* Offer Section Controller end *******
 		*************
-	*/ 
+	*/
 
 
 	/*
 		*************
 		******* Food Menu Section end *******
 		*************
-	*/ 
+	*/
   public function allFood(){
 		return view('admin.backend.foods.index');
 	}
@@ -205,7 +201,6 @@ class BackendController extends Controller
 		$validated = $request->validate([
 			'foodName' => ['required', 'string', 'max:100'],
 			'foodImg' => ['required', 'image', 'mimes:jpg,jpeg,png,gif', 'max:5120'],
-			'foodQuantity' => ['required', 'integer', 'min:1'],
 			'foodPrice' => ['required', 'numeric', 'min:0'],
 			'foodDesc' => ['required', 'string', 'max:255'],
 		]);
@@ -226,12 +221,11 @@ class BackendController extends Controller
 			'name'=>$validated['foodName'],
 			'description'=>$validated['foodDesc'],
 			'slug'=>strtolower(str_replace(' ', '-', $request->foodName)),
-			'quantity'=>$validated['foodQuantity'],
 			'price'=>$validated['foodPrice'],
 			'photo'=>$photo_done
 		]);
 		// ********* end inserting the data  *********
-		 
+
 		return redirect()->route('allFoods');
 	}
 
@@ -270,20 +264,18 @@ class BackendController extends Controller
 				'name' => $request->updateFoodName,
 				'description' => $request->updateFoodDesc,
 				'slug' => strtolower(str_replace(' ', '-', $request->updateFoodName)),
-				'quantity' => $request->updateFoodQuantity,
 				'price' => $request->updateFoodPrice,
 				'photo'=>$save_photo_url,
-				
+
 			]);
 			return redirect()->route('allFoods');
 		}
-		
+
 		else{
 			Foods::find($foodId)->update([
 				'name' => $request->updateFoodName,
 				'description' => $request->updateFoodDesc,
 				'slug' => strtolower(str_replace(' ', '-', $request->updateFoodName)),
-				'quantity' => $request->updateFoodQuantity,
 				'price' => $request->updateFoodPrice,
 			]);
 
@@ -296,14 +288,14 @@ class BackendController extends Controller
 		*************
 		******* Food Menu Section end *******
 		*************
-	*/ 
+	*/
 
 
 	/*
 		*************
 		******* Story Section start *******
 		*************
-	*/ 
+	*/
 	public function story(){
 		return view('admin.backend.story.index');
 	}
@@ -417,14 +409,14 @@ class BackendController extends Controller
 		*************
 		******* Story Section end *******
 		*************
-	*/ 
+	*/
 
 
 	/*
 		*************
 		******* Special-Dishes Section start *******
 		*************
-	*/ 
+	*/
 	public function specialDishes(){
 		return view('admin.backend.special-dishes.index');
 	}
@@ -509,7 +501,7 @@ class BackendController extends Controller
 		*************
 		******* Special-Dishes Section end *******
 		*************
-	*/ 
+	*/
 
 	/*
 		*************
@@ -538,7 +530,7 @@ class BackendController extends Controller
 		$photo_done = $photo_path.$photo_name_gen;
 
 		ChooseUs::create([
-			'title' => $validated['title'], 
+			'title' => $validated['title'],
 			'photo' => $photo_done,
 			'description' => $validated['description'],
 		]);
@@ -557,7 +549,7 @@ class BackendController extends Controller
 
 		// to update the photo, first we have to take former photo url
 		if($request->file('photo')){
-			// we have to find the id of the former photo 
+			// we have to find the id of the former photo
 			$old_photo = ChooseUs::find($choiceId)->photo;
 
 			if($old_photo && file_exists(public_path($old_photo))){
@@ -580,7 +572,7 @@ class BackendController extends Controller
 		else{
 			ChooseUs::find($choiceId)->update([
 				'title' => $request->title,
-				'description' => $request->description, 
+				'description' => $request->description,
 			]);
 
 			return redirect()->route('allChoice');
@@ -590,14 +582,14 @@ class BackendController extends Controller
 		*************
 		******* Choice Section end *******
 		*************
-	*/ 
-	
-	
+	*/
+
+
 	/*
 		*************
 		******* Event Section end *******
 		*************
-	*/  
+	*/
 	public function allEvent(){
 		return view('admin.backend.event.index');
 	}
@@ -621,8 +613,8 @@ class BackendController extends Controller
 		$photo_done = $photo_path.$photo_name_gen;
 
 		Event::create([
-			'date' => $validated['date'], 
-			'text' => $validated['text'], 
+			'date' => $validated['date'],
+			'text' => $validated['text'],
 			'photo' => $photo_done,
 			'description' => $validated['description'],
 		]);
@@ -678,5 +670,5 @@ class BackendController extends Controller
 		*************
 		******* Event Section end *******
 		*************
-	*/  
+	*/
 }

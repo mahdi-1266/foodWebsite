@@ -13,9 +13,9 @@
               <tr class="table-dark text-center">
                 <th scope="col" class="border">#</th>
                 <th scope="col" class="border">Name</th>
+                <th scope="col" class="border">Slug</th>
                 <th scope="col" class="border">Description</th>
                 <th scope="col" class="border">Slug</th>
-                <th scope="col" class="border">Quantity</th>
                 <th scope="col" class="border">Price</th>
                 <th scope="col" class="border">Photo</th>
                 <th scope="col" class="border">Edit</th>
@@ -32,9 +32,9 @@
                 <tr class="text-center">
                   <td class="border border-2">{{ $food->id }}</td>
                   <td class="border border-2">{{ $food->name }}</td>
+                  <td class="border border-2">{{ $food->slug }}</td>
                   <td class="border border-2">{{ $food->description }}</td>
                   <td class="border border-2">{{ $food->slug }}</td>
-                  <td class="border border-2">{{ $food->quantity }}</td>
                   <td class="border border-2">{{ '$'.$food->price }}</td>
                   <td class="border border-2">
                     <img src="{{ $food->photo }}" height="50px" width="100px" alt="Image">
@@ -49,11 +49,11 @@
                       <i class="ri-delete-bin-line"></i>
                     </a>
                   </td>
-                </tr>              
+                </tr>
             </tbody>
             @endforeach
 
-            
+
           </table>
         </div>
       </div>

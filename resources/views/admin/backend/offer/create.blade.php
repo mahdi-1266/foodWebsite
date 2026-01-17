@@ -12,18 +12,7 @@
           <div class="card-body">
             <div class="m-0">
               <label class="form-label" for="abc">Offer Category</label>
-              <input type="text" class="form-control" name="offercategory" placeholder="Enter the category">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6 col-12 mb-2">
-        <div class="card">
-          <div class="card-body">
-            <div class="m-0">
-              <label class="form-label" for="abc">Offer Menu</label>
-              <input type="text" class="form-control" name="menu" placeholder="Enter the menu">
+              <input type="text" class="form-control" name="food_category" placeholder="Enter the category">
             </div>
           </div>
         </div>

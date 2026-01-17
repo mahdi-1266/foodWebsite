@@ -27,8 +27,17 @@ require __DIR__.'/auth.php';
 // *********** it is the frontend controller route ***********
 Route::controller(FrontendController::class)->group(function(){
 	Route::get('/', 'home');
-	Route::get('show-food/{slug}');
+  Route::get('show-food/{slug}', 'show_menu_food')->name('show-menu-food');
 });
+
+// ============ Form Route Start ============
+Route::controller(FrontendController::class)->group(function () {
+  Route::get('/form', 'form')->name('form');
+  Route::get('/create-form', 'createform')->name('form.create');
+  Route::post('/store-form', 'storeForm')->name('form.store');
+  Route::get('/delete-form/{id}', 'deleteForm')->name('form.delete');
+});
+// ============ Form Route End ============
 
 // backend controller to controll the admin dashboard
 Route::middleware(['auth', 'roles:admin'])->group(function () {
@@ -93,16 +102,6 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 	});
 	// ============ Food Menu Route End ============
 
-
-	// ============ Form Route Start ============
-	Route::controller(FrontendController::class)->group(function () {
-		Route::get('/form', 'form')->name('form');
-		Route::get('/create-form', 'createform')->name('form.create');
-		Route::post('/store-form', 'storeForm')->name('form.store');
-		Route::get('/delete-form/{id}', 'deleteForm')->name('form.delete');
-	});
-	// ============ Form Route End ============
-
 	// ============ Choose us Route Start ============
 	Route::controller(BackendController::class)->group(function () {
 		Route::get('/all-choice', 'allchoice')->name('allChoice');
@@ -114,7 +113,7 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 	});
 	// ============ Choose us Route End ============
 
-		// ============ Event Route Start ============
+	// ============ Event Route Start ============
 	Route::controller(BackendController::class)->group(function(){
 		Route::get('/all-event', 'allEvent')->name('allevent');
 		Route::get('/create-event', 'createEvent')->name('event.create');
@@ -125,16 +124,16 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 	});
 	// ============ Event Route End ============
 
-
-	// ============ Order Page Route Start ============
-    Route::controller(FrontendController::class)->group(function(){
-        Route::get('/order', 'order')->name('order');
-    });
-	// ============ Order Page Route End ============
+  // ============ Testimonial Route Start ============
+	Route::controller(BackendController::class)->group(function(){
+		Route::get('/testimonial', 'testimonial')->name('testimonial');
+		Route::get('/testimonial', 'createTestimonial')->name('testimonial.create');
+		Route::post('/testimonial', 'storeTestimonial')->name('testimonial.store');
+		Route::get('/testimonial/{id}', 'deleteTestimonial')->name('testimonial.delete');
+		Route::get('/testimonial/{id}', 'editTestimonial')->name('testimonial.edit');
+		Route::post('/testimonial', 'updateTestimonial')->name('testimonial.update');
+	});
+	// ============ Testimonial Route End ============
 });
-
-
-
-
 
 Route::get('/user-dashboard', [UserDashboardController::class, 'userDashboard'])->name('user.dashboard');

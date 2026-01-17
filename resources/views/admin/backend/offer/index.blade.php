@@ -13,7 +13,6 @@
               <tr class="table-dark text-center">
                 <th scope="col" class="border">#</th>
                 <th scope="col" class="border">Food category</th>
-                <th scope="col" class="border">Menu</th>
                 <th scope="col" class="border">Photo</th>
                 <th scope="col" class="border">Edit</th>
                 <th scope="col" class="border">Delete</th>
@@ -28,8 +27,7 @@
               <tbody>
                 <tr class="text-center">
                   <td class="border">{{ $offer->id }}</td>
-                  <td class="border">{{ $offer->foodcategory }}</td>
-                  <td class="border">{{ $offer->menu }}</td>
+                  <td class="border">{{ $offer->food_category }}</td>
 
                   <td class="border">
                     <img src="{{ asset($offer->photo) }}" alt="image" width="100" height="50">
@@ -40,9 +38,9 @@
                       <i class="ri-mark-pen-line"></i>
                     </a>
                   </td>
-                  
+
                   <td class="border">
-                    <a class="btn btn-danger btn-sm mb-1" href="{{ route('story.delete', $offer->id) }}">
+                    <a class="btn btn-danger btn-sm mb-1" href="{{ route('offers.delete', $offer->id) }}">
                       <i class="ri-delete-bin-line"></i>
                     </a>
                   </td>

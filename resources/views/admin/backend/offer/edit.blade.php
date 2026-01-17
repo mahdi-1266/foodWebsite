@@ -27,17 +27,6 @@
         <div class="card">
           <div class="card-body">
             <div class="m-1">
-              <label class="form-label" for="abc">Offer Menu</label>
-              <input type="text" class="form-control" name="menu" value="{{ $offer->menu }}">
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="col-sm-6 col-12 mb-2">
-        <div class="card">
-          <div class="card-body">
-            <div class="m-1">
               <label class="form-label" for="abc">Offer Image</label>
               <input type="file" name='photo' class="form-control">
             </div>
