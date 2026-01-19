@@ -721,6 +721,7 @@ class BackendController extends Controller
 
   public function updateTestimonial(Request $request){
     $testimonialId = $request->id;
+    // $testimonial = Testimonial::findOrFail($request->id);
 
     if($request->file('photo')){
       $old_photo = Testimonial::find($testimonialId)->photo;
@@ -731,7 +732,7 @@ class BackendController extends Controller
 
       $photo = $request->file('photo');
       $photo_name_gen = hexdec(uniqid()).'.'.$photo->getClientOriginalExtension();
-      $photo->move(public_path('upload/testimonial/'));
+      $photo->move(public_path('upload/testimonial/'), $photo_name_gen);
       $photo_save_url = 'upload/testimonial/'.$photo_name_gen;
 
       Testimonial::find($testimonialId)->update([
@@ -739,6 +740,23 @@ class BackendController extends Controller
         'description' => $request->description,
         'name' => $request->name,
       ]);
+
+      /*
+      $photo = $request->file('photo');
+			$photo_name_gen = hexdec(uniqid()).'.'.$photo->getClientOriginalExtension();
+			$photo->move(public_path('upload/event/'), $photo_name_gen);
+			$save_photo_url = 'upload/event/'.$photo_name_gen;
+
+			Event::find($eventId)->update([
+				'date' => $request->date,
+				'text' => $request->text,
+				'description' => $request->description,
+				'photo' => $save_photo_url,
+			]);
+
+      */
+
+
       return redirect()->route('testimonial');
     }
     else{
