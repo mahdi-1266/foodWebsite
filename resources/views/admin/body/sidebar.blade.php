@@ -16,32 +16,35 @@
       <li class="treeview">
         <a href="#!">
           <i class="ri-home-line"></i>
-          <span class="menu-text">All Foods</span>
+          <span class="menu-text">All Tables</span>
         </a>
         <ul class="treeview-menu">
           <li>
-            <a href="{{ route('heroSection'); }}">Hero Section</a>
+            <a href="{{ route('heroSection') }}">Hero Section</a>
           </li>
           <li>
-            <a href="{{ route('allFoods'); }}">All Foods</a>
+            <a href="{{ route('allFoods') }}">Foods</a>
           </li>
           <li>
-            <a href="{{ route('offers'); }}">All Offers</a>
+            <a href="{{ route('offers') }}">Offers</a>
           </li>
           <li>
-            <a href="{{ route('story'); }}">All Stories</a>
+            <a href="{{ route('story') }}">Stories</a>
           </li>
           <li>
-            <a href="{{ route('specialDishes'); }}">All Special Dishes</a>
+            <a href="{{ route('specialDishes') }}">Special Dishes</a>
           </li>
           <li>
-            <a href="{{ route('form'); }}">Form</a>
+            <a href="{{ route('form') }}">Form</a>
           </li>
            <li>
-            <a href="{{ route('allChoice'); }}">All Choices</a>
+            <a href="{{ route('allChoice') }}">Choices</a>
           </li>
           <li>
-            <a href="{{ route('allevent'); }}">All Events</a>
+            <a href="{{ route('allevent') }}">Events</a>
+          </li>
+          <li>
+            <a href="{{ route('testimonial') }}">Testimonial</a>
           </li>
         </ul>
       </li>

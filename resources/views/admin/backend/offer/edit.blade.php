@@ -17,7 +17,7 @@
           <div class="card-body">
             <div class="m-1">
               <label class="form-label" for="abc">Offer Category</label>
-              <input type="text" class="form-control" name="offercategory" value="{{ $offer->foodcategory }}">
+              <input type="text" class="form-control" name="food_category" value="{{ $offer->food_category }}">
             </div>
           </div>
         </div>

@@ -10,6 +10,7 @@ use App\Models\Story;
 use App\Models\SpecialDish;
 use App\Models\ChooseUs;
 use App\Models\Event;
+use App\Models\Testimonial;
 
 class BackendController extends Controller
 {
@@ -307,7 +308,7 @@ class BackendController extends Controller
 	public function storeStory(Request $request){
 		$validated = $request->validate([
 			'title' => ['required', 'string', 'max:100'],
-			'description' => ['required', 'string', 'max:250'],
+			'description' => ['required', 'string', 'max:350'],
 			'phone' => ['required', 'string', 'min:1'],
 			'photo1' => ['required', 'image', 'mimes:jpg,jpeg,png,gif', 'max:5120'],
 			'photo2' => ['required', 'image', 'mimes:jpg,jpeg,png,gif', 'max:5120'],
@@ -669,6 +670,103 @@ class BackendController extends Controller
 	/*
 		*************
 		******* Event Section end *******
+		*************
+	*/
+
+
+  /*
+		*************
+		******* Testimonial Section end *******
+		*************
+	*/
+  public function testimonial(){
+    return view('admin.backend.testimonial.index');
+  }
+
+  public function createTestimonial(){
+    return view('admin.backend.testimonial.create');
+  }
+
+  public function storeTestimonial(Request $request){
+    $validated = $request->validate([
+      'description' => ['required', 'string', 'max:300'],
+      'photo' => ['required', 'image', 'mimes:jpg,jpeg,png,gif', 'max:5120'],
+      'name' => ['required', 'string', 'max:50'],
+    ]);
+
+    $photo = $request->file('photo');
+    $photo_name_gen = hexdec(uniqid()).'.'.$photo->getClientOriginalExtension();
+    $photo_path = 'upload/testimonial/';
+    $photo->move(public_path($photo_path), $photo_name_gen);
+    $photo_done = $photo_path.$photo_name_gen;
+
+    Testimonial::create([
+      'description' => $validated['description'],
+      'photo' => $photo_done,
+      'name' => $validated['name'],
+    ]);
+
+    return redirect()->route('testimonial');
+  }
+
+  public function deleteTestimonial($id){
+    Testimonial::find($id)->delete();
+    return redirect()->route('testimonial');
+  }
+
+  public function editTestimonial($id){
+    $testimonial = Testimonial::find($id);
+    return view('admin.backend.testimonial.edit', compact('testimonial'));
+  }
+
+  public function updateTestimonial(Request $request){
+    $testimonialId = $request->id;
+
+    if($request->file('photo')){
+      $old_photo = Testimonial::find($testimonialId)->photo;
+
+      if($old_photo && file_exists(public_path($old_photo))){
+        unlink(public_path($old_photo));
+      }
+
+      $photo = $request->file('photo');
+      $photo_name_gen = hexdec(uniqid()).'.'.$photo->getClientOriginalExtension();
+      $photo->move(public_path('upload/testimonial/'));
+      $photo_save_url = 'upload/testimonial/'.$photo_name_gen;
+
+      Testimonial::find($testimonialId)->update([
+        'photo' => $photo_save_url,
+        'description' => $request->description,
+        'name' => $request->name,
+      ]);
+      return redirect()->route('testimonial');
+    }
+    else{
+      Testimonial::find($testimonialId)->update([
+        'description' => $request->description,
+        'name' => $request->name,
+      ]);
+      return redirect()->route('testimonial');
+    }
+  }
+  /*
+		*************
+		******* Testimonial Section end *******
+		*************
+	*/
+
+
+   /*
+		*************
+		******* Pruchase Section end *******
+		*************
+	*/
+  public function purchase(){
+    return view('frontend.purchase');
+  }
+  /*
+		*************
+		******* Pruchase Section end *******
 		*************
 	*/
 }

@@ -90,10 +90,10 @@
 
                     <div class="card-content">
                     <h3 class="title-4 card-title">
-                        <a href="#">{{ $offer->foodcategory }}</a>
+                        <a href="#">{{ $offer->food_category }}</a>
                     </h3>
 
-                    <a href="#" class="btn-text hover-underline label-2">{{ $offer->menu }}</a>
+                    <a href="#" class="btn-text hover-underline label-2">View Menu</a>
                     </div>
                 </div>
                 </li>
@@ -291,23 +291,26 @@
 
             <div class="quote">”</div>
 
-            <p class="headline-2 testi-text">
-            I wanted to thank you for inviting me down for that amazing dinner the other night. The food was
-            extraordinary.
-            </p>
+            @php
+              $testimonials = App\Models\Testimonial::get();
+            @endphp
 
-            <div class="wrapper">
-            <div class="separator"></div>
-            <div class="separator"></div>
-            <div class="separator"></div>
-            </div>
+            @foreach ($testimonials as $testimonial)
+              <p class="headline-2 testi-text">{{ $testimonial->description }}</p>
 
-            <div class="profile">
-                <img src="{{ asset('front-end/assets/images/testi-avatar.jpg'); }}" width="100" height="100" loading="lazy" alt="Sam Jhonson"
+              <div class="wrapper">
+                <div class="separator"></div>
+                <div class="separator"></div>
+                <div class="separator"></div>
+              </div>
+
+              <div class="profile">
+                <img src="{{ asset($testimonial->photo) }}" width="100" height="100" loading="lazy" alt="{{ $testimonial->name }}"
                 class="img">
 
-                <p class="label-2 profile-name">Sam Jhonson</p>
-            </div>
+                <p class="label-2 profile-name">{{ $testimonial->name }}</p>
+              </div>
+            @endforeach
         </div>
     </section>
     {{--

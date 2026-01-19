@@ -110,7 +110,7 @@
 						<textarea id="special-instructions" name="special_instructions" class="form-textarea" placeholder="Any special requests or dietary restrictions"></textarea>
 					</div>
 
-					<button type="submit" class="submit-btn">Place Order</button>
+          <a href="{{ route('purchase') }}" class="submit-btn" target="__blank">Place Order</a>
 				</form>
 			</div>
 		</div>

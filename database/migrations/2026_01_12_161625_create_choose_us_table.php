@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('choose_us', function (Blueprint $table) {
             $table->id();
-            $table->string('title1')->nullable();
-            $table->string('title2')->nullable();
+            $table->string('title')->nullable();
             $table->string('description')->nullable();
             $table->string('photo')->nullable();
             $table->timestamps();

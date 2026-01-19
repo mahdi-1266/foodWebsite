@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('phone')->nullable();
-            $table->string('customer-qty')->nullable();
+            $table->string('customer_qty')->nullable();
             $table->string('date')->nullable();
             $table->string('time')->nullable();
             $table->string('description')->nullable();

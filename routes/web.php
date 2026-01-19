@@ -126,14 +126,21 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 
   // ============ Testimonial Route Start ============
 	Route::controller(BackendController::class)->group(function(){
-		Route::get('/testimonial', 'testimonial')->name('testimonial');
-		Route::get('/testimonial', 'createTestimonial')->name('testimonial.create');
-		Route::post('/testimonial', 'storeTestimonial')->name('testimonial.store');
-		Route::get('/testimonial/{id}', 'deleteTestimonial')->name('testimonial.delete');
-		Route::get('/testimonial/{id}', 'editTestimonial')->name('testimonial.edit');
-		Route::post('/testimonial', 'updateTestimonial')->name('testimonial.update');
+    Route::get('/testimonial', 'testimonial')->name('testimonial');
+    Route::get('/create-testimonial', 'createTestimonial')->name('create.testimonial');
+    Route::post('/store-testimonial', 'storeTestimonial')->name('store.testimonial');
+    Route::get('/delete-testimonial/{id}', 'deleteTestimonial')->name('delete.testimonial');
+    Route::get('/edit-testimonial/{id}', 'editTestimonial')->name('edit.testimonial');
+    Route::post('/update-testimonial', 'updateTestimonial')->name('update.testimonial');
 	});
 	// ============ Testimonial Route End ============
+
+
+	// ============ Purchase Route Start ============
+  Route::controller(BackendController::class)->group(function(){
+    Route::get('/purchase', 'purchase')->name('purchase');
+  });
+	// ============ Purchase Route End ============
 });
 
 Route::get('/user-dashboard', [UserDashboardController::class, 'userDashboard'])->name('user.dashboard');
