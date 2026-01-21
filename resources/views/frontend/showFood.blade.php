@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Order - Grilli Restaurant</title>
-	<link rel="stylesheet" href="{{ asset('front-end/assets/css/style.css') }}">
-</head>
-<body>
-	<section class="order-container">
+@extends('frontend.dashboard')
+@section('frontend')
+  <section class="order-container">
 		<div class="order-content-container">
 			<div class="order-title">
 				<h1>Place Your Order</h1>
@@ -116,7 +108,8 @@
 		</div>
 	</section>
 
-	{{-- <script>
+
+  {{-- <script>
 		function changeQty(item, change) {
 			const input = document.getElementById('qty-' + item);
 			let currentValue = parseInt(input.value);
@@ -130,5 +123,4 @@
 		const today = new Date().toISOString().split('T')[0];
 		document.getElementById('delivery-date').setAttribute('min', today);
 	</script> --}}
-</body>
-</html>
+@endsection

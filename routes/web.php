@@ -39,6 +39,19 @@ Route::controller(FrontendController::class)->group(function () {
 });
 // ============ Form Route End ============
 
+// ============ Purchase Route Start ============
+Route::controller(FrontendController::class)->group(function(){
+  Route::get('/purchase', 'purchase')->name('purchase');
+});
+// ============ Purchase Route End ============
+
+// ============ All menu Route Start ============
+Route::controller(FrontendController::class)->group(function(){
+  Route::get('/all-menu', 'allMenu')->name('all-menu-food');
+});
+// ============ All menu Route End ============
+
+
 // backend controller to controll the admin dashboard
 Route::middleware(['auth', 'roles:admin'])->group(function () {
 	Route::get('/admin-dashboard', [AdminDashboardController::class, 'adminDashboard'])->name('admin.dashboard');
@@ -135,12 +148,13 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 	});
 	// ============ Testimonial Route End ============
 
-
-	// ============ Purchase Route Start ============
+	// ============ All menu Route Start ============
   Route::controller(BackendController::class)->group(function(){
-    Route::get('/purchase', 'purchase')->name('purchase');
+    Route::get('all-menu', 'allMenu')->name('all-menu');
+    Route::get('create-all-menu', 'createAllMenu')->name('create-all-menu');
+    Route::post('store-all-menu', 'storeAllMenu')->name('store-all-menu');
   });
-	// ============ Purchase Route End ============
+	// ============ All menu Route End ============
 });
 
 Route::get('/user-dashboard', [UserDashboardController::class, 'userDashboard'])->name('user.dashboard');

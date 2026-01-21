@@ -46,6 +46,9 @@
           <li>
             <a href="{{ route('testimonial') }}">Testimonial</a>
           </li>
+          <li>
+            <a href="{{ route('all-menu') }}">All Menu</a>
+          </li>
         </ul>
       </li>
     </ul>

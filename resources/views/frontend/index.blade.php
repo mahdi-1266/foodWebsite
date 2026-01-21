@@ -249,7 +249,7 @@
 
                             <p class="card-text label-1">{{ $food->description }}</p>
 
-                            <a href="{{ route('show-menu-food', $food->slug) }}" target="__blank" class="order-btn">
+                            <a href="{{ route('all-menu') }}" target="__blank" class="order-btn" style="margin-top: 10px">
                                 <span>Order Now</span>
                             </a>
                         </div>
@@ -262,7 +262,7 @@
           During winter daily from <span class="span">7:00 pm</span> to <span class="span">9:00 pm</span>
         </p>
 
-        <a href="#" class="btn btn-primary">
+        <a href="{{ route('all-menu-food') }}" target="__blank" class="btn btn-primary">
           <span class="text text-1">View All Menu</span>
           <span class="text text-2" aria-hidden="true">View All Menu</span>
         </a>
@@ -343,20 +343,20 @@
             </div>
 
             <div class="input-wrapper">
-                <div class="icon-wrapper">
-                    <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
-                    <select name="customer_qty" class="input-field">
-                        <option value="1">1 Person</option>
-                        <option value="2">2 Person</option>
-                        <option value="3">3 Person</option>
-                        <option value="4">4 Person</option>
-                        <option value="5">5 Person</option>
-                        <option value="6">6 Person</option>
-                        <option value="7">7 Person</option>
-                    </select>
+              <div class="icon-wrapper">
+                <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+                <select name="customer_qty" class="input-field">
+                    <option value="1">1 Person</option>
+                    <option value="2">2 Person</option>
+                    <option value="3">3 Person</option>
+                    <option value="4">4 Person</option>
+                    <option value="5">5 Person</option>
+                    <option value="6">6 Person</option>
+                    <option value="7">7 Person</option>
+                </select>
 
-                    <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
-                </div>
+                <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
+              </div>
 
                 <div class="icon-wrapper">
                     <ion-icon name="calendar-clear-outline" aria-hidden="true"></ion-icon>

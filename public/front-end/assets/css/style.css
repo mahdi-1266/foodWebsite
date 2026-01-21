@@ -181,8 +181,7 @@ font-family: var(--fontFamily-dm_sans);
 font-size: var(--fontSize-body-4);
 font-weight: var(--weight-regular);
 line-height: var(--lineHeight-5);
-/* overflow: hidden; */
-height: 300vh;
+height: auto;
 }
 
 body.loaded { overflow: overlay; }
@@ -661,10 +660,11 @@ top: 0;
 left: 0;
 width: 100%;
 background-color: transparent;
-padding-block: 40px;
+padding: 20px 0;
 z-index: 4;
 border-block-end: 1px solid transparent;
 transition: var(--transition-1);
+border: 1px solid blue;
 }
 
 .header.active {
@@ -684,6 +684,8 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 gap: 8px;
+/* border: 5px solid blue; */
+padding-bottom: 10px;
 }
 
 .nav-open-btn {
@@ -1362,6 +1364,7 @@ margin-block-start: 40px;
 #FOOTER
 \*-----------------------------------*/
 
+
 .footer-top { margin-block-end: 70px; }
 
 .footer-brand {
@@ -1720,7 +1723,8 @@ transition: color 0.3s ease;
     width: 100%;
     padding: 5rem 0;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    min-height: 100vh;
+    height: auto;
+    margin-top: 180px;
 }
 
 
@@ -1792,10 +1796,12 @@ transition: color 0.3s ease;
 }
 
 .quantity-controls {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
 }
+
 
 .qty-controls {
     display: flex;
@@ -1809,9 +1815,9 @@ transition: color 0.3s ease;
     border: none;
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: bold;
     transition: background 0.3s ease;
 }
@@ -1827,6 +1833,7 @@ transition: color 0.3s ease;
     border-radius: 5px;
     padding: 0.3rem;
     font-size: 1.3rem;
+    color: white;
 }
 
 .order-form-container {
@@ -1947,7 +1954,9 @@ transition: color 0.3s ease;
 
 
 
-
+.all-menu-container{
+  margin-top: 160px;
+}
 
 
 
@@ -1968,6 +1977,11 @@ margin-inline: auto;
 * FOOTER
 */
 
+.footer{
+  overflow: hidden;
+  border: 2px solid red;
+}
+
 .footer-brand > * {
 max-width: 460px;
 margin-inline: auto;
@@ -1987,9 +2001,6 @@ right: 0;
 bottom: 0;
 min-width: max-content;
 }
-
-}
-
 
 
 
@@ -2070,12 +2081,12 @@ color: var(--black);
 
 .reservation .input-wrapper {
 display: grid;
-grid-template-columns: 1fr 1fr;
+grid-template-columns: 1fr 1fr 1fr;
 column-gap: 20px;
 }
 
 .reservation .input-wrapper:nth-child(4) {
-grid-template-columns: repeat(3, 1fr);
+grid-template-columns: repeat(2, 1fr);
 }
 
 

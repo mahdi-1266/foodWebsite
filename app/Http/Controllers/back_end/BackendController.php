@@ -11,6 +11,7 @@ use App\Models\SpecialDish;
 use App\Models\ChooseUs;
 use App\Models\Event;
 use App\Models\Testimonial;
+use App\Models\AllFoodMenu;
 
 class BackendController extends Controller
 {
@@ -741,22 +742,6 @@ class BackendController extends Controller
         'name' => $request->name,
       ]);
 
-      /*
-      $photo = $request->file('photo');
-			$photo_name_gen = hexdec(uniqid()).'.'.$photo->getClientOriginalExtension();
-			$photo->move(public_path('upload/event/'), $photo_name_gen);
-			$save_photo_url = 'upload/event/'.$photo_name_gen;
-
-			Event::find($eventId)->update([
-				'date' => $request->date,
-				'text' => $request->text,
-				'description' => $request->description,
-				'photo' => $save_photo_url,
-			]);
-
-      */
-
-
       return redirect()->route('testimonial');
     }
     else{
@@ -776,15 +761,46 @@ class BackendController extends Controller
 
    /*
 		*************
-		******* Pruchase Section end *******
+		******* All Menu Section end *******
 		*************
 	*/
-  public function purchase(){
-    return view('frontend.purchase');
+  public function allMenu(){
+    return view('admin.backend.all-menu.index');
+  }
+
+  public function createAllMenu(){
+    return view('admin.backend.all-menu.create');
+  }
+
+  public function storeAllMenu(Request $request){
+    $validated = $request->validate([
+      'name' => ['required', 'string', 'max:50'],
+      'price' => ['required', 'numeric', 'max:10'],
+      'photo' => ['required', 'image', 'mimes:jpg,jpeg,png,gif', 'max:2048'],
+      'description' => ['required', 'string', 'max:300'],
+    ]);
+
+    $image = $request->file('photo');
+    $image_name = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+    $image_path = 'upload/all-menu/';
+    $image->move(public_path($image_path), $image_name);
+    $image_done = $image_path.$image_name;
+
+
+    AllFoodMenu::create([
+      'name' => $validated['name'],
+      'price' => $validated['price'],
+      'photo' => $image_done,
+      'description' => $validated['description'],
+    ]);
+
+    return redirect()->route('all-menu');
   }
   /*
 		*************
-		******* Pruchase Section end *******
+		******* All Menu Section end *******
 		*************
 	*/
+
+
 }

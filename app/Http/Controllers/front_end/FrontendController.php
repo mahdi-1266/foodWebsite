@@ -56,4 +56,33 @@ class FrontendController extends Controller
 	/* **********
 	order end
 	********** */
+
+  /*
+		*************
+		******* Pruchase Section end *******
+		*************
+	*/
+  public function purchase(){
+    return view('frontend.purchase');
+  }
+  /*
+		*************
+		******* Pruchase Section end *******
+		*************
+	*/
+
+
+  /*
+		*************
+		******* All Menu Section end *******
+		*************
+	*/
+  public function allMenu(){
+    return view('frontend.allMenu');
+  }
+  /*
+		*************
+		******* All Menu Section end *******
+		*************
+	*/
 }
