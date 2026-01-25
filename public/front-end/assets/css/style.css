@@ -1831,7 +1831,6 @@ transition: color 0.3s ease;
     border-radius: 5px;
     padding: 0.3rem;
     font-size: 1.3rem;
-    color: white;
 }
 
 
@@ -1845,6 +1844,10 @@ transition: color 0.3s ease;
   gap: 20px;
   color: rgb(127, 140, 141);
   font-size: 14px;
+}
+
+.food-qty{
+  font-size: 13px;
 }
 
 .order-form-container {

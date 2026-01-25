@@ -20,19 +20,15 @@
 						<p class="menu-description">{{ $menu->description	 }}</p>
 
             <div class="quantity-controls">
-							<div class="qty-controls">
+              <div class="qty-controls">
+                <button type="button" class="qty-btn sub-btn">-</button>
 
-                <div class="food-qty-box">Food Quantity <span class="food-qty">1</span></div>
+                <input type="number" value="0" min="0" class="qty-input" readonly>
 
-                {{-- onclick="changeQty('salmon', -1)"
-								<button class="qty-btn" >-</button>
+                <button type="button" class="qty-btn add-btn">+</button>
+              </div>
 
-                <input type="number" id="qty-salmon" value="0" min="0" class="qty-input" readonly>
-
-                onclick="changeQty('salmon', 1)"
-								<button class="qty-btn" >+</button> --}}
-							</div>
-							<span class="menu-badge">Popular</span>
+              <span class="menu-badge">Popular</span>
 						</div>
 					</div>
 				</div>
@@ -94,7 +90,7 @@
 						</select>
 					</div>
 
-                    <div class="form-group">
+          <div class="form-group">
 						<label for="address" class="form-label">Delivery Address</label>
 						<textarea id="address" name="address" class="form-textarea" placeholder="Enter your full address" required></textarea>
 					</div>
@@ -110,19 +106,5 @@
 		</div>
 	</section>
 
-
-  {{-- <script>
-		function changeQty(item, change) {
-			const input = document.getElementById('qty-' + item);
-			let currentValue = parseInt(input.value);
-			let newValue = currentValue + change;
-			if (newValue >= 0) {
-				input.value = newValue;
-			}
-		}
-
-		// Set minimum date to today
-		const today = new Date().toISOString().split('T')[0];
-		document.getElementById('delivery-date').setAttribute('min', today);
-	</script> --}}
+  <script src="{{ asset('front-end/assets/js/food.js') }}"></script>
 @endsection

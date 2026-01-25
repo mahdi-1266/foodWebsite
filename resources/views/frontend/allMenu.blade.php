@@ -30,20 +30,9 @@
 
                 <p class="card-text label-1">{{ $menu->description }}</p>
 
-                <div class="quantity-controls">
-							    <div class="qty-controls">
-                    <button class="qty-btn" id="sub-btn">-</button>
-
-                    <input type="number" id="qty-salmon" value="0" min="0" class="qty-input" readonly>
-
-								    <button type="button" class="qty-btn" id="add-btn" onclick="addValue('salmon', 1)">+</button>
-							    </div>
-
-							    <a href="{{ route('show-menu-food', $menu->slug) }}" target="__blank" class="order-btn">
-                    <span>Submit Order</span>
-                  </a>
-						    </div>
-
+                <a href="{{ route('show-menu-food', $menu->slug) }}" target="__blank" class="order-btn">
+                  <span>Submit Order</span>
+                </a>
 
               </div>
             </div>
@@ -67,20 +56,6 @@
 
     </div>
   </section>
-
-
-  <script>
-
-    function addValue(item, change){
-      let inputValue = document.getElementById('qty-salmon' + item);
-      let currentValue = parseInt(inputValue.value);
-      let newValue = currentValue + change;
-
-      if(inputValue >= 0){
-        input.value = newValue;
-      }
-    }
-	</script>
 @endsection
 
 
