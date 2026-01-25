@@ -789,12 +789,60 @@ class BackendController extends Controller
 
     AllFoodMenu::create([
       'name' => $validated['name'],
+      'slug' => strtolower(str_replace(' ', '-', $request->name)),
       'price' => $validated['price'],
       'photo' => $image_done,
       'description' => $validated['description'],
     ]);
 
     return redirect()->route('all-menu');
+  }
+
+  public function deleteAllMenu($id){
+    AllFoodMenu::find($id)->delete();
+    return redirect()->route('all-menu');
+  }
+
+  public function editAllMenu($id){
+    $menu = AllFoodMenu::find($id);
+    return view('admin.backend.all-menu.edit', compact('menu'));
+  }
+
+  public function updateAllMenu(Request $request){
+    $menuId = $request->id;
+
+    if($request->file('photo')){
+      $old_image = AllFoodMenu::find($menuId)->photo;
+
+      if($old_image && file_exists($old_image)){
+        unlink(public_path($old_image));
+      }
+
+      $image = $request->file('photo');
+      $image_name = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+      $image->move(public_path('upload/all-menu'), $image_name);
+      $image_save_url = 'upload/all-menu/'.$image_name;
+
+      AllFoodMenu::find($menuId)->update([
+        'photo' => $image_save_url,
+        'name' => $request->name,
+        'slug' => strtolower(str_replace(' ', '-', $request->name)),
+        'description' => $request->description,
+        'price' => $request->price,
+      ]);
+
+      return redirect()->route('all-menu');
+    }
+    else{
+      AllFoodMenu::find($menuId)->update([
+        'name' => $request->name,
+        'slug' => strtolower(str_replace(' ', '-', $request->name)),
+        'description' => $request->description,
+        'price' => $request->price,
+      ]);
+
+      return redirect()->route('all-menu');
+    }
   }
   /*
 		*************

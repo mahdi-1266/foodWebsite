@@ -11,24 +11,26 @@
 
 				<!-- Sample Menu Item 1 -->
 				<div class="menu-item">
-					<img src="{{ asset($food->photo) }}" alt="Grilled Salmon" class="menu-image">
+					<img src="{{ asset($menu->photo) }}" alt="Grilled Salmon" class="menu-image">
 					<div class="menu-content">
 						<div class="menu-header">
-							<h3 class="menu-name">{{ $food->name }}</h3>
-							<span class="menu-price">{{ '$'.$food->price }}</span>
+							<h3 class="menu-name">{{ $menu->name }}</h3>
+							<span class="menu-price">{{ '$'.$menu->price }}</span>
 						</div>
-						<p class="menu-description">{{ $food->description	 }}</p>
+						<p class="menu-description">{{ $menu->description	 }}</p>
 
             <div class="quantity-controls">
 							<div class="qty-controls">
 
-                {{-- onclick="changeQty('salmon', -1)" --}}
+                <div class="food-qty-box">Food Quantity <span class="food-qty">1</span></div>
+
+                {{-- onclick="changeQty('salmon', -1)"
 								<button class="qty-btn" >-</button>
 
                 <input type="number" id="qty-salmon" value="0" min="0" class="qty-input" readonly>
 
-                {{-- onclick="changeQty('salmon', 1)" --}}
-								<button class="qty-btn" >+</button>
+                onclick="changeQty('salmon', 1)"
+								<button class="qty-btn" >+</button> --}}
 							</div>
 							<span class="menu-badge">Popular</span>
 						</div>

@@ -9,37 +9,37 @@
       <ul class="grid-list">
 
         @php
-            $foods = App\Models\Foods::get();
+            $menus = App\Models\AllFoodMenu::get();
         @endphp
 
-        @foreach($foods as $food)
+        @foreach($menus as $menu)
           <li>
             <div class="menu-card hover:card">
               <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                <img src="{{ $food->photo }}" width="100" height="100" loading="lazy" alt="Greek Salad"
+                <img src="{{ $menu->photo }}" width="100px" height="100px" loading="lazy" alt="{{ $menu->name }}"
                 class="img-cover">
               </figure>
 
               <div>
                 <div class="title-wrapper">
                   <h3 class="title-3">
-                      <a href="#" class="card-title">{{ $food->name }}</a>
+                      <a href="#" class="card-title">{{ $menu->name }}</a>
                   </h3>
-                  <span class="span title-2">{{ '$'.$food->price }}</span>
+                  <span class="span title-2">{{ '$'.$menu->price }}</span>
                 </div>
 
-                <p class="card-text label-1">{{ $food->description }}</p>
+                <p class="card-text label-1">{{ $menu->description }}</p>
 
                 <div class="quantity-controls">
 							    <div class="qty-controls">
-                    <button class="qty-btn" >-</button>
+                    <button class="qty-btn" id="sub-btn">-</button>
 
                     <input type="number" id="qty-salmon" value="0" min="0" class="qty-input" readonly>
 
-								    <button class="qty-btn" >+</button>
+								    <button type="button" class="qty-btn" id="add-btn" onclick="addValue('salmon', 1)">+</button>
 							    </div>
 
-							    <a href="{{ route('show-menu-food', $food->slug) }}" target="__blank" class="order-btn">
+							    <a href="{{ route('show-menu-food', $menu->slug) }}" target="__blank" class="order-btn">
                     <span>Submit Order</span>
                   </a>
 						    </div>
@@ -67,4 +67,34 @@
 
     </div>
   </section>
+
+
+  <script>
+
+    function addValue(item, change){
+      let inputValue = document.getElementById('qty-salmon' + item);
+      let currentValue = parseInt(inputValue.value);
+      let newValue = currentValue + change;
+
+      if(inputValue >= 0){
+        input.value = newValue;
+      }
+    }
+	</script>
 @endsection
+
+
+{{-- <script>
+		function changeQty(item, change) {
+			const input = document.getElementById('qty-' + item);
+			let currentValue = parseInt(input.value);
+			let newValue = currentValue + change;
+			if (newValue >= 0) {
+				input.value = newValue;
+			}
+		}
+
+		// Set minimum date to today
+		const today = new Date().toISOString().split('T')[0];
+		document.getElementById('delivery-date').setAttribute('min', today);
+	</script> --}}

@@ -3,7 +3,7 @@
 <div class="col-sm-12">
   <div class="card mb-3">
     <div class="card-header">
-      <h5 class="card-title">Events</h5>
+      <h5 class="card-title">All Menu Foods</h5>
     </div>
     <div class="card-body">
       <div class="table-outer">
@@ -37,12 +37,12 @@
                     <img src="{{ $menu->photo }}" width="100" height="50" alt="{{ $menu->name }}">
                   </td>
                   <td class="border">
-                    <a class="btn btn-info btn-sm" href="">
+                    <a class="btn btn-info btn-sm" href="{{ route('edit-all-menu', $menu->id) }}">
                       <i class="ri-mark-pen-line"></i>
                     </a>
                   </td>
                   <td class="border">
-                    <a class="btn btn-danger btn-sm mb-1" href="">
+                    <a class="btn btn-danger btn-sm mb-1" href="{{ route('delete-all-menu', $menu->id) }}">
                       <i class="ri-delete-bin-line"></i>
                     </a>
                   </td>

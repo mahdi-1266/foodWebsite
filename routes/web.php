@@ -47,7 +47,7 @@ Route::controller(FrontendController::class)->group(function(){
 
 // ============ All menu Route Start ============
 Route::controller(FrontendController::class)->group(function(){
-  Route::get('/all-menu', 'allMenu')->name('all-menu-food');
+  Route::get('all-foods-menu', 'all_foods_menu')->name('all_foods_menu');
 });
 // ============ All menu Route End ============
 
@@ -150,9 +150,12 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 
 	// ============ All menu Route Start ============
   Route::controller(BackendController::class)->group(function(){
-    Route::get('all-menu', 'allMenu')->name('all-menu');
-    Route::get('create-all-menu', 'createAllMenu')->name('create-all-menu');
-    Route::post('store-all-menu', 'storeAllMenu')->name('store-all-menu');
+    Route::get('/all-menu', 'allMenu')->name('all-menu');
+    Route::get('/create-all-menu', 'createAllMenu')->name('create-all-menu');
+    Route::post('/store-all-menu', 'storeAllMenu')->name('store-all-menu');
+    Route::get('/delete-all-menu/{id}', 'deleteAllMenu')->name('delete-all-menu');
+    Route::get('/edit-all-menu/{id}', 'editAllMenu')->name('edit-all-menu');
+    Route::post('/update-all-menu', 'updateAllMenu')->name('update-all-menu');
   });
 	// ============ All menu Route End ============
 });

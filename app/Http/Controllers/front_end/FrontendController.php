@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\front_end;
 use App\Http\Controllers\Controller;
+use App\Models\AllFoodMenu;
 use App\Models\Form;
 use App\Models\Foods;
 
@@ -50,8 +51,8 @@ class FrontendController extends Controller
 	order start
 	********** */
   public function show_menu_food($slug){
-    $food = Foods::get()->where('slug', $slug)->firstOrFail();
-		return view('frontend.showFood', compact('food'));
+    $menu = AllFoodMenu::get()->where('slug', $slug)->firstOrFail();
+		return view('frontend.showFood', compact('menu'));
   }
 	/* **********
 	order end
@@ -77,7 +78,7 @@ class FrontendController extends Controller
 		******* All Menu Section end *******
 		*************
 	*/
-  public function allMenu(){
+  public function all_foods_menu(){
     return view('frontend.allMenu');
   }
   /*

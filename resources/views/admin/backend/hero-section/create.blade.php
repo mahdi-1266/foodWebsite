@@ -7,7 +7,8 @@
     @csrf
     <!-- Row starts -->
     <div class="row gx-3">
-      <div class="col-sm-6 col-12">
+
+      <div class="col-sm-6 col-12 mb-3">
         <div class="card">
           <div class="card-body">
             <div class="m-0">
@@ -18,7 +19,7 @@
         </div>
       </div>
 
-      <div class="col-sm-6 col-12">
+      <div class="col-sm-6 col-12 mb-3">
         <div class="card">
           <div class="card-body">
             <div class="m-0">
@@ -28,8 +29,8 @@
           </div>
         </div>
       </div>
-      
-      <div class="col-sm-6 col-12">
+
+      <div class="col-sm-12 col-12 mb-3">
         <div class="card">
           <div class="card-body">
             <div class="m-0">
@@ -40,7 +41,7 @@
         </div>
       </div>
 
-      <div class="col-6">
+      <div class="col-sm-12 mb-3">
         <div class="card">
           <div class="card-body">
             <div class="m-0">

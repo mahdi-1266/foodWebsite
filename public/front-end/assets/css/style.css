@@ -664,7 +664,6 @@ padding: 20px 0;
 z-index: 4;
 border-block-end: 1px solid transparent;
 transition: var(--transition-1);
-border: 1px solid blue;
 }
 
 .header.active {
@@ -684,7 +683,6 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 gap: 8px;
-/* border: 5px solid blue; */
 padding-bottom: 10px;
 }
 
@@ -1836,6 +1834,19 @@ transition: color 0.3s ease;
     color: white;
 }
 
+
+.food-qty-box{
+  border-radius: 5px;
+  width: 150px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  color: rgb(127, 140, 141);
+  font-size: 14px;
+}
+
 .order-form-container {
     background: white;
     border-radius: 15px;
@@ -1979,7 +1990,6 @@ margin-inline: auto;
 
 .footer{
   overflow: hidden;
-  border: 2px solid red;
 }
 
 .footer-brand > * {

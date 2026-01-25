@@ -249,7 +249,7 @@
 
                             <p class="card-text label-1">{{ $food->description }}</p>
 
-                            <a href="{{ route('all-menu') }}" target="__blank" class="order-btn" style="margin-top: 10px">
+                            <a href="{{ route('all_foods_menu') }}" target="__blank" class="order-btn" style="margin-top: 10px">
                                 <span>Order Now</span>
                             </a>
                         </div>
@@ -262,7 +262,7 @@
           During winter daily from <span class="span">7:00 pm</span> to <span class="span">9:00 pm</span>
         </p>
 
-        <a href="{{ route('all-menu-food') }}" target="__blank" class="btn btn-primary">
+        <a href="{{ route('all_foods_menu') }}" target="__blank" class="btn btn-primary">
           <span class="text text-1">View All Menu</span>
           <span class="text text-2" aria-hidden="true">View All Menu</span>
         </a>

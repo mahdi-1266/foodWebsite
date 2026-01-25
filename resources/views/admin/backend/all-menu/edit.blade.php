@@ -2,8 +2,8 @@
 @section('dashboard-body')
 <!-- App body starts -->
 <div class="app-body w-50 mx-auto mt-4 border border-2">
-  <h5 class="mb-3">Edit Event</h5>
-  <form action="" method="post" enctype="multipart/form-data">
+  <h5 class="mb-3">Add Menu</h5>
+  <form action="{{ route('update-all-menu') }}" method="post" enctype="multipart/form-data">
     @csrf
     <!-- Row starts -->
     <div class="row gx-3">
@@ -12,8 +12,8 @@
         <div class="card">
           <div class="card-body">
             <div class="m-0">
-              <label class="form-label" for="abc">Text</label>
-              <input type="text" class="form-control" name="text">
+              <label class="form-label" for="abc">Name</label>
+              <input type="text" class="form-control" name="name" value="{{ $menu->name }}">
             </div>
           </div>
         </div>
@@ -23,8 +23,8 @@
         <div class="card">
           <div class="card-body">
             <div class="m-0">
-              <label class="form-label" for="abc">Date</label>
-              <input type="date" class="form-control" name="date">
+              <label class="form-label" for="abc">Price</label>
+              <input type="number" class="form-control" name="price" value="{{ $menu->price }}">
             </div>
           </div>
         </div>
@@ -35,7 +35,7 @@
           <div class="card-body">
             <div class="m-0">
               <label class="form-label" for="abc">Image</label>
-              <input type="file" name='photo' class="form-control" id="abc">
+              <input type="file" name='photo' class="form-control">
             </div>
           </div>
         </div>
@@ -46,15 +46,16 @@
           <div class="card-body">
             <div class="m-0">
               <label class="form-label" for="abc6">Description</label>
-              <textarea class="form-control" name="description" rows="3"></textarea>
+              <textarea class="form-control" name="description" rows="3">{{ $menu->description }}</textarea>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="m-0">
-      <input type="hidden" class="form-control" name="id" value="">
+      <div class="m-0">
+        <input type="hidden" class="form-control" name="id" value="{{ $menu->id }}">
+      </div>
+
     </div>
 
     <div class="m-0 col-sm-2">
