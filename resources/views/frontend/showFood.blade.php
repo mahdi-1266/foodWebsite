@@ -9,31 +9,32 @@
 
 			<div class="order-grid">
 
-				<!-- Sample Menu Item 1 -->
-				<div class="menu-item">
-					<img src="{{ asset($menu->photo) }}" alt="Grilled Salmon" class="menu-image">
-					<div class="menu-content">
-						<div class="menu-header">
-							<h3 class="menu-name">{{ $menu->name }}</h3>
-							<span class="menu-price">{{ '$'.$menu->price }}</span>
-						</div>
-						<p class="menu-description">{{ $menu->description	 }}</p>
+        @foreach($cart as $foodId => $item)
+          @php
+            $food = \App\Models\AllFoodMenu::find($foodId);
+          @endphp
 
-            <div class="quantity-controls">
-              <div class="qty-controls">
-                <button type="button" class="qty-btn sub-btn">-</button>
+          <div class="menu-item">
+            <img src="{{ asset($food->photo) }}" class="menu-image">
 
-                <input type="number" value="0" min="0" class="qty-input" readonly>
-
-                <button type="button" class="qty-btn add-btn">+</button>
+            <div class="menu-content">
+              <div class="menu-header">
+                <h3 class="menu-name">{{ $food->name }}</h3>
+                <span class="menu-price">
+                  ${{ number_format($item['total'], 2) }}
+                </span>
               </div>
 
-              <span class="menu-badge">Popular</span>
-						</div>
-					</div>
-				</div>
+              <p class="menu-description">{{ $food->description }}</p>
 
-			</div>
+              <p class="quantity"><strong>Quantity:</strong> {{ $item['qty'] }}</p>
+              <p class="price"><strong>Unit Price:</strong> ${{ $item['price'] }}</p>
+            </div>
+          </div>
+        @endforeach
+
+      </div>
+
 
 			<div class="order-form-container">
 				<h2 class="form-title">Customer Information</h2>
@@ -60,7 +61,7 @@
 						<input type="date" id="delivery-date" name="delivery_date" class="form-input" required>
 					</div>
 
-					<div class="form-group">
+					{{-- <div class="form-group">
 						<label for="delivery-time" class="form-label">Preferred Delivery Time</label>
 						<select id="delivery-time" name="delivery_time" class="form-select" required>
 							<option value="">Select person</option>
@@ -73,9 +74,9 @@
 							<option value="19:00">7 Person</option>
 							<option value="20:00">8 Person</option>
 						</select>
-					</div>
+					</div> --}}
 
-                    <div class="form-group">
+          <div class="form-group">
 						<label for="delivery-time" class="form-label">Preferred Delivery Time</label>
 						<select id="delivery-time" name="delivery_time" class="form-select" required>
 							<option value="">Select time</option>
@@ -92,15 +93,16 @@
 
           <div class="form-group">
 						<label for="address" class="form-label">Delivery Address</label>
-						<textarea id="address" name="address" class="form-textarea" placeholder="Enter your full address" required></textarea>
+						<textarea id="address" name="delivery_address" class="form-textarea" placeholder="Enter your full address" required></textarea>
 					</div>
 
-					<div class="form-group">
+					{{-- <div class="form-group">
 						<label for="special-instructions" class="form-label">Special Instructions</label>
 						<textarea id="special-instructions" name="special_instructions" class="form-textarea" placeholder="Any special requests or dietary restrictions"></textarea>
-					</div>
+					</div> --}}
 
-          <a href="{{ route('purchase') }}" class="submit-btn" target="__blank">Place Order</a>
+          {{-- {{ route('purchase') }} --}}
+          <a href="" class="submit-btn" target="__blank">Place Order</a>
 				</form>
 			</div>
 		</div>

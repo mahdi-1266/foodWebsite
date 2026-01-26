@@ -1824,13 +1824,16 @@ transition: color 0.3s ease;
     background: #2980b9;
 }
 
+.quantity, .price{color: black;}
+
 .qty-input {
     width: 50px;
     text-align: center;
     border: 1px solid #bdc3c7;
     border-radius: 5px;
     padding: 0.3rem;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    color: white;
 }
 
 
@@ -1878,12 +1881,12 @@ transition: color 0.3s ease;
     flex-direction: column;
 }
 
-.form-group:nth-child(7){
+.form-group:nth-child(6){
     grid-column-start: 1;
     grid-column-end: 3;
 }
 
-.form-group:nth-child(8){
+.form-group:nth-child(7){
     grid-column-start: 1;
     grid-column-end: 3;
 }

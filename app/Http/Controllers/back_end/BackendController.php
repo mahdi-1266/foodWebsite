@@ -775,7 +775,7 @@ class BackendController extends Controller
   public function storeAllMenu(Request $request){
     $validated = $request->validate([
       'name' => ['required', 'string', 'max:50'],
-      'price' => ['required', 'numeric', 'max:10'],
+      'price' => ['required', 'numeric', 'max:50'],
       'photo' => ['required', 'image', 'mimes:jpg,jpeg,png,gif', 'max:2048'],
       'description' => ['required', 'string', 'max:300'],
     ]);
@@ -785,7 +785,6 @@ class BackendController extends Controller
     $image_path = 'upload/all-menu/';
     $image->move(public_path($image_path), $image_name);
     $image_done = $image_path.$image_name;
-
 
     AllFoodMenu::create([
       'name' => $validated['name'],

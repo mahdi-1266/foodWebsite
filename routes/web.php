@@ -27,7 +27,7 @@ require __DIR__.'/auth.php';
 // *********** it is the frontend controller route ***********
 Route::controller(FrontendController::class)->group(function(){
 	Route::get('/', 'home');
-  Route::get('show-food/{slug}', 'show_menu_food')->name('show-menu-food');
+  // Route::get('show-food/{slug}', 'show_menu_food')->name('show-menu-food');
 });
 
 // ============ Form Route Start ============
@@ -50,6 +50,20 @@ Route::controller(FrontendController::class)->group(function(){
   Route::get('all-foods-menu', 'all_foods_menu')->name('all_foods_menu');
 });
 // ============ All menu Route End ============
+
+// ============ All foods Route Start ============
+Route::controller(FrontendController::class)->group(function(){
+  Route::post('/cart-food', 'cartFood')->name('cart-food');
+  Route::get('/order-food', 'showOrder')->name('order.show');
+});
+// ============ All foods Route End ============
+
+// ============ Customer Info Route Start ============
+Route::controller(FrontendController::class)->group(function(){
+  Route::get('/customer-info', 'customerInfo')->name('customer-info');
+  Route::post('/store-customer-info', 'storeCustomerInfo')->name('store-customer-info');
+});
+// ============ Customer Info Route End ============
 
 
 // backend controller to controll the admin dashboard

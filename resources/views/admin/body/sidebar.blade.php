@@ -51,6 +51,18 @@
           </li>
         </ul>
       </li>
+
+      <li class="treeview">
+        <a href="#!">
+          <i class="ri-user-line"></i>
+          <span class="menu-text">Customer Info</span>
+        </a>
+        <ul class="treeview-menu">
+          <li>
+            <a href="{{ route('customer-info') }}">Customer Info</a>
+          </li>
+        </ul>
+      </li>
     </ul>
   </div>
   <!-- Sidebar menu ends -->
