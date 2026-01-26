@@ -65,6 +65,12 @@ Route::controller(FrontendController::class)->group(function(){
 });
 // ============ Customer Info Route End ============
 
+// ============ Customer Info Route Start ============
+Route::controller(FrontendController::class)->group(function(){
+  Route::get('/order-view', 'orderView')->name('order-view');
+});
+// ============ Customer Info Route End ============
+
 
 // backend controller to controll the admin dashboard
 Route::middleware(['auth', 'roles:admin'])->group(function () {

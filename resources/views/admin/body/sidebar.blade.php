@@ -34,9 +34,6 @@
           <li>
             <a href="{{ route('specialDishes') }}">Special Dishes</a>
           </li>
-          <li>
-            <a href="{{ route('form') }}">Form</a>
-          </li>
            <li>
             <a href="{{ route('allChoice') }}">Choices</a>
           </li>
@@ -48,6 +45,18 @@
           </li>
           <li>
             <a href="{{ route('all-menu') }}">All Menu</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="treeview">
+        <a href="#!">
+          <i class="ri-message-line"></i>
+          <span class="menu-text">Form</span>
+        </a>
+        <ul class="treeview-menu">
+          <li>
+            <a href="{{ route('form') }}">Form</a>
           </li>
         </ul>
       </li>

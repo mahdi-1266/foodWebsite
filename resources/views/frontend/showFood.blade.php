@@ -39,7 +39,9 @@
 			<div class="order-form-container">
 				<h2 class="form-title">Customer Information</h2>
 
-				<form class="order-form" action="#" method="post">
+				<form class="order-form" action="{{ route('store-customer-info') }}" method="post">
+          @csrf
+
 					<div class="form-group">
 						<label for="name" class="form-label">Full Name</label>
 						<input type="text" id="name" name="name" class="form-input" placeholder="Enter your full name" required>
@@ -52,7 +54,7 @@
 
 					<div class="form-group">
 						<label for="phone" class="form-label">Phone Number</label>
-						<input type="tel" id="phone" name="phone" class="form-input" placeholder="Enter your number" required>
+						<input type="text" id="phone" name="phone" class="form-input" placeholder="Enter your number" required>
 					</div>
 
 
@@ -102,7 +104,8 @@
 					</div> --}}
 
           {{-- {{ route('purchase') }} --}}
-          <a href="" class="submit-btn" target="__blank">Place Order</a>
+          {{-- <a href="{{ route('store-customer-info') }}" class="submit-btn" target="__blank">Place Order</a> --}}
+          <button type="submit" class="submit-btn">Place Order</button>
 				</form>
 			</div>
 		</div>

@@ -13,51 +13,48 @@
               <tr class="table-dark text-center">
                 <th scope="col" class="border">#</th>
                 <th scope="col" class="border">Name</th>
+                <th scope="col" class="border">Email</th>
                 <th scope="col" class="border">Phone</th>
-                <th scope="col" class="border">Customer Quantity</th>
-                <th scope="col" class="border">Date</th>
-                <th scope="col" class="border">Time</th>
-                <th scope="col" class="border">Description</th>
+                <th scope="col" class="border">Delivery Date</th>
+                <th scope="col" class="border">Delivery Time</th>
+                <th scope="col" class="border">Delivery Address</th>
+                <th scope="col" class="border">View</th>
                 <th scope="col" class="border">Delete</th>
               </tr>
             </thead>
 
-            {{-- @php
-              $forms = App\Models\Form::get()
-            @endphp --}}
+            @php
+              $customers = App\Models\CustomerInformation::get()
+            @endphp
 
-            {{-- @foreach($forms as $form) --}}
+            @foreach($customers as $customer)
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                </tr>
-                {{-- <tr class="text-center">
-                  <td class="border border-2">{{ $form->id }}</td>
-                  <td class="border border-2">{{ $form->name }}</td>
-                  <td class="border border-2">{{ $form->phone }}</td>
-                  <td class="border border-2">{{ $form->customer_qty }}</td>
-                  <td class="border border-2">{{ $form->date }}</td>
-                  <td class="border border-2">{{ $form->time }}</td>
-                  <td class="border border-2">{{ $form->description }}</td>
+                <tr class="text-center">
+                  <td class="border border-2">{{ $customer->id }}</td>
+                  <td class="border border-2">{{ $customer->name }}</td>
+                  <td class="border border-2">{{ $customer->email }}</td>
+                  <td class="border border-2">{{ $customer->phone }}</td>
+                  <td class="border border-2">{{ $customer->delivery_date }}</td>
+                  <td class="border border-2">{{ $customer->delivery_time }}</td>
+                  <td class="border border-2">{{ $customer->delivery_address }}</td>
 
                   <td class="border border-2">
-                    <a class="btn btn-danger btn-sm mb-1" href="{{ route('form.delete', $form->id) }}">
+                    <a class="btn btn-primary btn-sm mb-1" href="{{ route('order-view', $customer->id) }}">View</a>
+                  </td>
+
+                  <td class="border border-2">
+                    <a class="btn btn-danger btn-sm mb-1" href="">
                       <i class="ri-delete-bin-line"></i>
                     </a>
                   </td>
-                </tr> --}}
+                </tr>
             </tbody>
-            {{-- @endforeach --}}
+            @endforeach
           </table>
         </div>
       </div>
 
-      <a href="" class="btn btn-primary my-2 py-2 px-3">Add Food</a>
+      <a href="" class="btn btn-primary my-2 py-2 px-3">Add Customer Info</a>
     </div>
   </div>
 </div>

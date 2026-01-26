@@ -97,10 +97,10 @@ class FrontendController extends Controller
     $validated = $request->validate([
       'name' => ['required', 'string', 'max:50'],
       'email' => ['required', 'string', 'max:50'],
-      'phone' => ['required', 'numeric', 'max:20'],
+      'phone' => ['required', 'string', 'max:20'],
       'delivery_date' => ['required', 'date'],
-      'delivery_time' => ['required', 'date_format:H:i:s'],
-      'delivery_address	' => ['required', 'string', 'max:300'],
+      'delivery_time' => ['required', 'date_format:H:i'],
+      'delivery_address' => ['required', 'string', 'max:300'],
     ]);
 
     CustomerInformation::create([
@@ -112,7 +112,14 @@ class FrontendController extends Controller
       'delivery_address' => $validated['delivery_address'],
     ]);
 
-    return view('frontend.showFood');
+    return redirect()->route('purchase')->with('success', 'Order placed!');
   }
   /* ********** Custoer info Section end ********** */
+
+
+  /* ********** Order View Section start ********** */
+  public function orderView(){
+    return view('admin.backend.customer-info.order-view');
+  }
+  /* ********** Order View Section end ********** */
 }
