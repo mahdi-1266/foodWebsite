@@ -62,13 +62,13 @@ Route::controller(FrontendController::class)->group(function(){
 Route::controller(FrontendController::class)->group(function(){
   Route::get('/customer-info', 'customerInfo')->name('customer-info');
   Route::post('/store-customer-info', 'storeCustomerInfo')->name('store-customer-info');
+  Route::get('/delete-customer-info/{id}', 'deleteCustomerInfo')->name('delete-customer-info');
+  Route::get('/invoice/{id}', 'invoice')->name('invoice');
 });
 // ============ Customer Info Route End ============
 
 // ============ Customer Info Route Start ============
-Route::controller(FrontendController::class)->group(function(){
-  Route::get('/order-view', 'orderView')->name('order-view');
-});
+// Route::controller(FrontendController::class)->group(function(){});
 // ============ Customer Info Route End ============
 
 

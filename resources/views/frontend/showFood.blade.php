@@ -57,26 +57,42 @@
 						<input type="text" id="phone" name="phone" class="form-input" placeholder="Enter your number" required>
 					</div>
 
+          {{-- @php
+            $menus = App\Models\AllFoodMenu::get();
+          @endphp --}}
+          {{-- @foreach ($menus as $menu) --}}
+            {{-- <div class="form-group">
+              <label for="delivery-date" class="form-label">Food Name</label>
+              <input type="text" name="item" class="form-input">
+            </div> --}}
+          {{-- @endforeach --}}
 
-					<div class="form-group">
+          {{-- @php
+            $menus = App\Models\AllFoodMenu::get();
+          @endphp
+          @foreach ($menus as $menu)
+            <div class="form-group">
+              <label for="delivery-date" class="form-label">Food Quantity</label>
+              <input type="number" name="item_qty" class="form-input" readonly value="{{ $menu->qty }}">
+            </div>
+          @endforeach --}}
+
+          {{-- @php
+            $menus = App\Models\AllFoodMenu::get();
+          @endphp
+          @foreach ($menus as $menu)
+            <div class="form-group">
+              <label for="delivery-date" class="form-label">Food Price</label>
+              <input type="number" name="price" class="form-input" readonly value="{{ $menu->price }}">
+            </div>
+          @endforeach --}}
+
+
+
+          <div class="form-group">
 						<label for="delivery-date" class="form-label">Preferred Delivery Date</label>
 						<input type="date" id="delivery-date" name="delivery_date" class="form-input" required>
 					</div>
-
-					{{-- <div class="form-group">
-						<label for="delivery-time" class="form-label">Preferred Delivery Time</label>
-						<select id="delivery-time" name="delivery_time" class="form-select" required>
-							<option value="">Select person</option>
-							<option value="11:00">1 Person</option>
-							<option value="12:00">2 Person</option>
-							<option value="13:00">3 Person</option>
-							<option value="14:00">4 Person</option>
-							<option value="17:00">5 Person</option>
-							<option value="18:00">6 Person</option>
-							<option value="19:00">7 Person</option>
-							<option value="20:00">8 Person</option>
-						</select>
-					</div> --}}
 
           <div class="form-group">
 						<label for="delivery-time" class="form-label">Preferred Delivery Time</label>
@@ -98,10 +114,6 @@
 						<textarea id="address" name="delivery_address" class="form-textarea" placeholder="Enter your full address" required></textarea>
 					</div>
 
-					{{-- <div class="form-group">
-						<label for="special-instructions" class="form-label">Special Instructions</label>
-						<textarea id="special-instructions" name="special_instructions" class="form-textarea" placeholder="Any special requests or dietary restrictions"></textarea>
-					</div> --}}
 
           {{-- {{ route('purchase') }} --}}
           {{-- <a href="{{ route('store-customer-info') }}" class="submit-btn" target="__blank">Place Order</a> --}}

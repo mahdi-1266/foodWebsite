@@ -34,9 +34,12 @@
     <link rel="preload" as="image" href="{{ asset('front-end/assets/images/hero-slider-1.jpg'); }}">
     <link rel="preload" as="image" href="{{ asset('front-end/assets/images/hero-slider-2.jpg'); }}">
     <link rel="preload" as="image" href="{{ asset('front-end/assets/images/hero-slider-3.jpg'); }}">
+
+    <link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/brands.min.css')}}" integrity="sha512-WxpJXPm/Is1a/dzEdhdaoajpgizHQimaLGL/QqUIAjIihlQqlPQb1V9vkGs9+VzXD7rgI6O+UsSKl4u5K36Ydw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body id="top">
-    
+
     <!-- *********
         ******* #PRELOADER *******
     ********** -->

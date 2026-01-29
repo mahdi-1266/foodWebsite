@@ -11,7 +11,7 @@
 
         <ul class="grid-list">
           @php
-              $menus = App\Models\AllFoodMenu::get();
+            $menus = App\Models\AllFoodMenu::get();
           @endphp
 
           @foreach($menus as $menu)
@@ -26,7 +26,7 @@
                 <div>
                   <div class="title-wrapper">
                     <h3 class="title-3">
-                        <a href="#" class="card-title">{{ $menu->name }}</a>
+                      <a href="#" class="card-title">{{ $menu->name }}</a>
                     </h3>
 
                     <!-- Price displayed as text, unit price stored in data-price -->
@@ -42,6 +42,10 @@
                     <div class="qty-controls">
                       <button type="button" class="qty-btn sub-btn">-</button>
 
+                      {{--
+                        name="items[5][qty]"
+                        $request->items = [5 => [ 'qty' => 3 ]];
+                      --}}
                       <input type="number" name="items[{{ $menu->id }}][qty]" value="0" min="0" class="qty-input" readonly>
 
                       <button type="button" class="qty-btn add-btn">+</button>

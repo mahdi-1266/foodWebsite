@@ -43,8 +43,19 @@
           <li>
             <a href="{{ route('testimonial') }}">Testimonial</a>
           </li>
+        </ul>
+      </li>
+
+
+
+      <li class="treeview">
+        <a href="#!">
+          <i class="ri-message-line"></i>
+          <span class="menu-text">All Menu Food</span>
+        </a>
+        <ul class="treeview-menu">
           <li>
-            <a href="{{ route('all-menu') }}">All Menu</a>
+            <a href="{{ route('all-menu') }}">All Menu Food</a>
           </li>
         </ul>
       </li>

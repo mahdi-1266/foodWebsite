@@ -39,11 +39,11 @@
                   <td class="border border-2">{{ $customer->delivery_address }}</td>
 
                   <td class="border border-2">
-                    <a class="btn btn-primary btn-sm mb-1" href="{{ route('order-view', $customer->id) }}">View</a>
+                    <a class="btn btn-primary btn-sm mb-1" href="{{ route('invoice', $customer->id) }}">View</a>
                   </td>
 
                   <td class="border border-2">
-                    <a class="btn btn-danger btn-sm mb-1" href="">
+                    <a class="btn btn-danger btn-sm mb-1" href="{{ route('delete-customer-info', $customer->id) }}">
                       <i class="ri-delete-bin-line"></i>
                     </a>
                   </td>
