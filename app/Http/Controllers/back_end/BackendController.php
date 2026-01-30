@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\back_end;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Foods;
 use App\Models\HeroSection;
 use App\Models\TopOffer;
@@ -15,6 +16,15 @@ use App\Models\AllFoodMenu;
 
 class BackendController extends Controller
 {
+  public function AdminLogout(Request $request){
+    // logging out of the authenticated user account
+    Auth::guard('web')->logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    return redirect()->route('login');
+  }
+
+
 	/*
 		*************
 		******* Hero Section Controller start *******

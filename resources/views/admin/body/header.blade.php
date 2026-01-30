@@ -37,7 +37,7 @@
 					<h6 class="m-0">James Bruton</h6>
 				</div>
 				<div class="mx-3 my-2 d-grid">
-					<a href="login.html" class="btn btn-danger">Logout</a>
+					<a href="{{ route('admin.logout') }}" class="btn btn-danger">Logout</a>
 				</div>
 			</div>
 		</div>

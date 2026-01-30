@@ -135,7 +135,7 @@
 
     </nav>
 
-    <a href="#" class="btn btn-secondary">
+    <a href="#reservation" class="btn btn-secondary">
       <span class="text text-1">Find A Table</span>
 
       <span class="text text-2" aria-hidden="true">Find A Table</span>

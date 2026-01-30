@@ -67,10 +67,6 @@ Route::controller(FrontendController::class)->group(function(){
 });
 // ============ Customer Info Route End ============
 
-// ============ Customer Info Route Start ============
-// Route::controller(FrontendController::class)->group(function(){});
-// ============ Customer Info Route End ============
-
 
 // backend controller to controll the admin dashboard
 Route::middleware(['auth', 'roles:admin'])->group(function () {
@@ -178,6 +174,10 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::post('/update-all-menu', 'updateAllMenu')->name('update-all-menu');
   });
 	// ============ All menu Route End ============
+
+  Route::controller(BackendController::class)->group(function(){
+    Route::get('/admin/logout', 'AdminLogout')->name('admin.logout');
+  });
 });
 
 Route::get('/user-dashboard', [UserDashboardController::class, 'userDashboard'])->name('user.dashboard');

@@ -5,6 +5,41 @@
       <p class="section-subtitle text-center label-2">All Foods Menu List</p>
       <h2 class="headline-1 section-title text-center">All Delicious Menu</h2>
 
+      <div class="menu-list-cotainer">
+        <div class="">
+          <ul>
+
+            <li class="all-menu-items">
+              <a href="#" id="btn" class="btn btn-primary">
+                <span class="text text-1">All food</span>
+                <span class="text text-2" aria-hidden="true">All food</span>
+              </a>
+            </li>
+
+            <li class="all-menu-items">
+              <a href="#" id="btn" class="btn btn-primary">
+                <span class="text text-1">Fast food</span>
+                <span class="text text-2" aria-hidden="true">Fast food</span>
+              </a>
+            </li>
+
+            <li class="all-menu-items">
+              <a href="#" class="btn btn-primary">
+                <span class="text text-1">Diesser</span>
+                <span class="text text-2" aria-hidden="true">Diesser</span>
+              </a>
+            </li>
+
+            <li class="all-menu-items">
+              <a href="#" class="btn btn-primary">
+                <span class="text text-1">Drinks</span>
+                <span class="text text-2" aria-hidden="true">Drinks</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <!-- Form for all foods -->
       <form action="{{ route('cart-food') }}" method="POST">
         @csrf
