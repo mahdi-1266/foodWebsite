@@ -14,6 +14,7 @@
                 <th scope="col" class="border">#</th>
                 <th scope="col" class="border">Name</th>
                 <th scope="col" class="border">Slug</th>
+                <th scope="col" class="border">Category</th>
                 <th scope="col" class="border">Description</th>
                 <th scope="col" class="border">Price</th>
                 <th scope="col" class="border">Photo</th>
@@ -31,6 +32,7 @@
                   <td class="border">{{ $menu->id }}</td>
                   <td class="border">{{ $menu->name }}</td>
                   <td class="border">{{ $menu->slug }}</td>
+                  <td class="border">{{ $menu->category }}</td>
                   <td class="border">{{ $menu->description }}</td>
                   <td class="border">{{ $menu->price }}</td>
                   <td class="border">

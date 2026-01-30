@@ -239,6 +239,10 @@
 
 .all-menu-items{ font-size: 18px; }
 
+.active-item{
+  background: var(--gold-crayola);
+  color: var(--black) !important;
+}
 /*-----------------------------------*\
 #CUSTOM PROPERTY
 \*-----------------------------------*/

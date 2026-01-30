@@ -9,29 +9,29 @@
         <div class="">
           <ul>
 
-            <li class="all-menu-items">
-              <a href="#" id="btn" class="btn btn-primary">
+            <li class="all-menu-items menu-btn">
+              <a href="#" id="btn" class="btn btn-primary active-item" data-filter="all">
                 <span class="text text-1">All food</span>
                 <span class="text text-2" aria-hidden="true">All food</span>
               </a>
             </li>
 
-            <li class="all-menu-items">
-              <a href="#" id="btn" class="btn btn-primary">
+            <li class="all-menu-items menu-btn">
+              <a href="#" id="btn" class="btn btn-primary" data-filter="Fast food">
                 <span class="text text-1">Fast food</span>
                 <span class="text text-2" aria-hidden="true">Fast food</span>
               </a>
             </li>
 
-            <li class="all-menu-items">
-              <a href="#" class="btn btn-primary">
-                <span class="text text-1">Diesser</span>
-                <span class="text text-2" aria-hidden="true">Diesser</span>
+            <li class="all-menu-items menu-btn" >
+              <a href="#" class="btn btn-primary" data-filter="Dessert">
+                <span class="text text-1">Dessert</span>
+                <span class="text text-2" aria-hidden="true">Dessert</span>
               </a>
             </li>
 
-            <li class="all-menu-items">
-              <a href="#" class="btn btn-primary">
+            <li class="all-menu-items menu-btn" >
+              <a href="#" class="btn btn-primary" data-filter="Drinks">
                 <span class="text text-1">Drinks</span>
                 <span class="text text-2" aria-hidden="true">Drinks</span>
               </a>
@@ -50,7 +50,7 @@
           @endphp
 
           @foreach($menus as $menu)
-            <li>
+            <li class="food-item" data-category="{{ $menu->category }}">
               <div class="menu-card hover:card">
 
                 <figure class="card-banner img-holder" style="--width: 100; --height: 100;">

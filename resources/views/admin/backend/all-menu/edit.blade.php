@@ -30,6 +30,17 @@
         </div>
       </div>
 
+      <div class="col-sm-6 col-12 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="m-0">
+              <label class="form-label" for="abc">Category</label>
+              <input type="text" class="form-control" name="category" value="{{ $menu->category }}">
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="col-sm-12 col-12 mb-3">
         <div class="card">
           <div class="card-body">

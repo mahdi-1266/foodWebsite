@@ -26,4 +26,31 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+
+  const buttons = document.querySelectorAll('.menu-btn a');
+  const foods = document.querySelectorAll('.food-item');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+
+      const filter = btn.dataset.filter;
+
+      // active state
+      buttons.forEach(b => b.classList.remove('active-item'));
+      btn.classList.add('active-item');
+
+      foods.forEach(food => {
+        const category = food.dataset.category;
+
+        if (filter === 'all' || category === filter) {
+          food.style.display = '';
+        } else {
+          food.style.display = 'none';
+        }
+      });
+    });
+  });
+
 });

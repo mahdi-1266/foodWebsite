@@ -786,6 +786,7 @@ class BackendController extends Controller
     $validated = $request->validate([
       'name' => ['required', 'string', 'max:50'],
       'price' => ['required', 'numeric', 'max:50'],
+      'category' => ['required', 'string', 'max:50'],
       'photo' => ['required', 'image', 'mimes:jpg,jpeg,png,gif', 'max:2048'],
       'description' => ['required', 'string', 'max:300'],
     ]);
@@ -799,6 +800,7 @@ class BackendController extends Controller
     AllFoodMenu::create([
       'name' => $validated['name'],
       'slug' => strtolower(str_replace(' ', '-', $request->name)),
+      'category' => $validated['category'],
       'price' => $validated['price'],
       'photo' => $image_done,
       'description' => $validated['description'],
@@ -836,6 +838,7 @@ class BackendController extends Controller
         'photo' => $image_save_url,
         'name' => $request->name,
         'slug' => strtolower(str_replace(' ', '-', $request->name)),
+        'category' => $request->category,
         'description' => $request->description,
         'price' => $request->price,
       ]);
@@ -846,6 +849,7 @@ class BackendController extends Controller
       AllFoodMenu::find($menuId)->update([
         'name' => $request->name,
         'slug' => strtolower(str_replace(' ', '-', $request->name)),
+        'category' => $request->category,
         'description' => $request->description,
         'price' => $request->price,
       ]);
