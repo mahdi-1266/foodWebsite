@@ -23,10 +23,33 @@
 	<!-- App brand ends -->
 
 	<!-- App header actions starts -->
-	<div class="header-actions">
+	<div class="header-actions d-flex justify-content-betwee">
 
 		<!-- Header user settings starts -->
-		<div class="dropdown ms-2">
+
+    {{-- Notifications --}}
+    <div class="dropdown notification">
+			<a id="userSettings" class="dropdown-toggle d-flex align-items-center" href="#!" role="button"
+				data-bs-toggle="dropdown" aria-expanded="false">
+				<div class="avatar-box">Notifications<span class="status busy"></span></div>
+			</a>
+
+			<div class="notification-dropdown-menu dropdown-menu dropdown-menu-end shadow-lg visible">
+        <div class="w-100 h-100">
+          <div class="d-flex justify-content-between align-items-center px-2">
+            <a href="{{ route('notification') }}" target="__blank"><h5 class="m-2">Orders</h5></a>
+
+
+            <div class="order-box d-flex justify-content-center align-items-center bg-primary">
+              <span class="text-white fw-bold">2</span>
+            </div>
+          </div>
+        </div>
+			</div>
+		</div>
+
+
+    <div class="dropdown ms-1">
 			<a id="userSettings" class="dropdown-toggle d-flex align-items-center" href="#!" role="button"
 				data-bs-toggle="dropdown" aria-expanded="false">
 				<div class="avatar-box">JB<span class="status busy"></span></div>

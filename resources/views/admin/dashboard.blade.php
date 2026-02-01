@@ -14,13 +14,14 @@
 	<meta property="og:description" content="Marketplace for Bootstrap Admin Dashboards">
 	<meta property="og:type" content="Website">
 	<link rel="shortcut icon" href="{{ asset('back-end/assets/images/favicon.svg'); }}">
-	
+
 
 	<!-- *************
 	************ CSS Files *************
 ************* -->
 	<link rel="stylesheet" href="{{ asset('back-end/assets/fonts/remix/remixicon.css'); }}">
 	<link rel="stylesheet" href="{{ asset('back-end/assets/css/main.min.css'); }}">
+	<link rel="stylesheet" href="{{ asset('back-end/assets/css/style.css'); }}">
 
 	<!-- *************
 	************ Vendor Css Files *************
@@ -120,7 +121,7 @@
 	<!-- *************
 		************ Vendor Js Files *************
 ************* -->
-			
+
 
 	<!-- Overlay Scroll JS -->
 	<script src="{{ asset('back-end/assets/vendor/overlay-scroll/jquery.overlayScrollbars.min.js'); }}"></script>

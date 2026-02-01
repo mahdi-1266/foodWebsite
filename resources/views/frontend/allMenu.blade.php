@@ -53,7 +53,7 @@
             <li class="food-item" data-category="{{ $menu->category }}">
               <div class="menu-card hover:card">
 
-                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
+                <figure class="card-banner img-holder allmenu-img-holder" style="--width: 100; --height: 100;">
                   <img src="{{ $menu->photo }}" width="100px" height="100px" loading="lazy" alt="{{ $menu->name }}"
                   class="img-cover">
                 </figure>

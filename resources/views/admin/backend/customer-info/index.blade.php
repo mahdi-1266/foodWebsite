@@ -19,6 +19,8 @@
                 <th scope="col" class="border">Delivery Time</th>
                 <th scope="col" class="border">Delivery Address</th>
                 <th scope="col" class="border">View</th>
+                <th scope="col" class="border">Status</th>
+                <th scope="col" class="border">Action</th>
                 <th scope="col" class="border">Delete</th>
               </tr>
             </thead>
@@ -41,6 +43,9 @@
                   <td class="border border-2">
                     <a class="btn btn-primary btn-sm mb-1" href="{{ route('invoice', $customer->id) }}">View</a>
                   </td>
+                  <td class="border border-2">
+                    <button class="btn btn-primary btn-sm mb-1 pend-btn">Pending</button>
+                  </td>
 
                   <td class="border border-2">
                     <a class="btn btn-danger btn-sm mb-1" href="{{ route('delete-customer-info', $customer->id) }}">
@@ -58,4 +63,39 @@
     </div>
   </div>
 </div>
+
+
+
+{{-- <script type="text/javascript">
+  let pendingBtn = document.querySelectorAll('.pend-btn');
+
+  pendingBtn.forEach(function(btn){
+    btn.addEventListener('click', function() {
+      handle(btn);
+    });
+  });
+
+  function handle(btn){
+    if(btn.innerText === 'Pending'){
+        btn.innerText = 'Accepted';
+        btn.classList.remove('btn-primary');
+        btn.classList.add('btn-success');
+      }
+      else if(btn.innerText === 'Accepted'){
+        btn.innerText = 'Delivered';
+        btn.classList.remove('btn-success');
+        btn.classList.add('btn-warning');
+      }
+      else if(btn.innerText === 'Delivered'){
+        btn.innerText = 'Cenceled';
+        btn.classList.remove('btn-warning');
+        btn.classList.add('btn-danger');
+      }
+      else if(btn.innerText === 'Cenceled'){
+        btn.innerText = 'Pending';
+        btn.classList.remove('btn-danger');
+        btn.classList.add('btn-primary');
+      }
+  }
+</script> --}}
 @endsection

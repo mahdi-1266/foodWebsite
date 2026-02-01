@@ -864,4 +864,13 @@ class BackendController extends Controller
 	*/
 
 
+
+
+
+  /*====== Notifications controller ======*/
+  public function notification(){
+    return view('admin.backend.notifications.index');
+  }
+
+
 }

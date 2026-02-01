@@ -668,9 +668,19 @@ transition: var(--transition-3);
 aspect-ratio: var(--width) / var(--height);
 overflow: hidden;
 background-color: var(--eerie-black-4);
-width: 100px;
-height: 100px;
 position: relative;
+}
+
+.allmenu-img-holder{
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.allmenu-img-holder img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .btn-text {

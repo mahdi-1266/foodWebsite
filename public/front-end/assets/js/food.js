@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
+  // status buttons codes
   const buttons = document.querySelectorAll('.menu-btn a');
   const foods = document.querySelectorAll('.food-item');
 

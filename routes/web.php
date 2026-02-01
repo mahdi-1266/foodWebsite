@@ -178,6 +178,10 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
   Route::controller(BackendController::class)->group(function(){
     Route::get('/admin/logout', 'AdminLogout')->name('admin.logout');
   });
+
+  Route::controller(BackendController::class)->group(function(){
+    Route::get('/notifications', 'notification')->name('notification');
+  });
 });
 
 Route::get('/user-dashboard', [UserDashboardController::class, 'userDashboard'])->name('user.dashboard');
