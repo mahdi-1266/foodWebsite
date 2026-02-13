@@ -48,10 +48,8 @@ class FrontendController extends Controller
 	}
 
 
+
 	/* ********** store menu food start ********** */
-
-  // $menu = AllFoodMenu::get()->firstOrFail();
-
   public function cartFood(Request $request){
     /*
       اگر درخواست آیتمی وجود نداشت، آرایه خالی در نظر بگیر و ایتم های که بیشتر از 0 است را نگهدار
@@ -69,22 +67,10 @@ class FrontendController extends Controller
         'qty' => $item['qty'],
         'total' => $item['qty'] * $food->price,
       ];
-      // $item['name'] = $food->name;
-      // $item['price'] = $food->price;
-      // $item['total'] = $item['qty'] * $item['price'];
-      // return $item;
+      /* Collection { 1 => [ 'food_id' => 1, 'name' => 'Pizza', 'price' => 5, 'qty' => 5, 'total' => 25 ]} */
     });
 
-    /*
-      $item['price']: نام های است که ما ان را برای ایتم پاس مکنیم
-      $item['total']: نام های است که ما ان را برای ایتم پاس مکنیم
-      در اخر
-      [
-        1 => ['qty' => 2, 'price' => 150, 'total' => 300],
-        2 => ['qty' => 1, 'price' => 200, 'total' => 200],
-      ]
-    */
-
+    // اطلاعات هر غذا را در کارت ذخیره میکند
     session(['cart' => $cart]);
 
     return redirect()->route('order.show');
@@ -140,8 +126,6 @@ class FrontendController extends Controller
 
     // Save cart items into order_items
     $cart = session('cart', []);
-    // dd(session('cart'));
-    // dd($cart->toArray());
 
 
     foreach($cart as $item){
@@ -167,12 +151,6 @@ class FrontendController extends Controller
 
     // Fetch the order with its related items
     $order = CustomerInformation::with('items')->findOrFail($id);
-
-    // dd(
-    //   $order->toArray(),
-    //   $order->items->toArray()
-    // );
-
     return view('admin.backend.customer-info.invoice', compact('order'));
   }
 

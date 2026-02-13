@@ -32,7 +32,7 @@
                   <td class="border">{{ $order->phone }}</td>
                   <td class="border">{{ $order->delivery_address }}</td>
                   <td class="border">Qabli palaw</td>
-                  <td class="border">{{ $order->status }}</td>
+                  <td class="border" id="status-td">pending</td>
                   <td class="d-flex justify-content-center align-items-center flex-column border">
                     <a href="" type="button" class="w-50 btn btn-primary status-btn">Accept</a>
                     <a href="" type="button" class="w-50 btn btn-danger mt-2 status-btn">Cancel</a>
@@ -45,5 +45,18 @@
       </div>
     </div>
 
-    <script src="{{ asset('back-end/assets/js/item-status.js') }}"></script>
+<script>
+  document.addEventListener('DOMContentLoaded'), () => {
+    let statusButtons = document.querySelectorAll('.status-btn');
+
+    statusButtons.forEach(function btn {
+      btn.addEventListener('click', function() {
+        handle(btn);
+      });
+    });
+
+    function handle(btn){}
+
+  }
+</script>
 @endsection

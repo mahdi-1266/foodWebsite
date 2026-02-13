@@ -20,7 +20,7 @@
                 <th scope="col" class="border">Delivery Address</th>
                 <th scope="col" class="border">View</th>
                 <th scope="col" class="border">Status</th>
-                <th scope="col" class="border">Action</th>
+                {{-- <th scope="col" class="border">Action</th> --}}
                 <th scope="col" class="border">Delete</th>
               </tr>
             </thead>
@@ -43,8 +43,8 @@
                   <td class="border border-2">
                     <a class="btn btn-primary btn-sm mb-1" href="{{ route('invoice', $customer->id) }}">View</a>
                   </td>
-                  <td class="border border-2">
-                    <button class="btn btn-primary btn-sm mb-1 pend-btn">Pending</button>
+                  <td class="border border-2" id="status-td">
+                    <button type="submit" class="btn btn-primary pend-btn">Pending</button>
                   </td>
 
                   <td class="border border-2">
@@ -59,14 +59,11 @@
         </div>
       </div>
 
-      <a href="" class="btn btn-primary my-2 py-2 px-3">Add Customer Info</a>
     </div>
   </div>
 </div>
 
-
-
-{{-- <script type="text/javascript">
+<script type="text/javascript">
   let pendingBtn = document.querySelectorAll('.pend-btn');
 
   pendingBtn.forEach(function(btn){
@@ -97,5 +94,5 @@
         btn.classList.add('btn-primary');
       }
   }
-</script> --}}
+</script>
 @endsection

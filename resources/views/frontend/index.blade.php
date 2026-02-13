@@ -4,7 +4,7 @@
   <article>
     {{--
         /*-----------------------------------*\
-            HERO START
+          HERO START
         /*-----------------------------------*\
     --}}
     <section class="hero text-center" aria-label="home" id="home">

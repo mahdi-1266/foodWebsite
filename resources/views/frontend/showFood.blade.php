@@ -32,7 +32,6 @@
             </div>
           </div>
         @endforeach
-
       </div>
 
 

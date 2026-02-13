@@ -27,7 +27,6 @@ require __DIR__.'/auth.php';
 // *********** it is the frontend controller route ***********
 Route::controller(FrontendController::class)->group(function(){
 	Route::get('/', 'home');
-  // Route::get('show-food/{slug}', 'show_menu_food')->name('show-menu-food');
 });
 
 // ============ Form Route Start ============

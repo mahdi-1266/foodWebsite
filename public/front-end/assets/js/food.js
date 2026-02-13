@@ -45,11 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
       foods.forEach(food => {
         const category = food.dataset.category;
 
-        if (filter === 'all' || category === filter) {
-          food.style.display = '';
-        } else {
-          food.style.display = 'none';
-        }
+        if(filter === 'all' || category === filter){ food.style.display = ''; }
+        else{ food.style.display = 'none'; }
       });
     });
   });

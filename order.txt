@@ -1,4 +1,144 @@
-Fix the food quantity.
+question of foodorder project
+
+1:
+Break it down line by line
+public function AdminLogout(Request $request){
+  Auth::guard('web')->logout();
+  $request->session()->invalidate();
+  $request->session()->regenerateToken();
+  return redirect()->route('login');
+}
+
+2:
+what is HTML "data" attribute
+<li class="food-item" data-category="{{ $menu->category }}"></li>
+
+3:
+break this down too, and tell me what is the [qty], and if the teacher asks me why i wrote the "name" like this
+and why i used this brackets[], name="items[{{ $menu->id }}][qty]
+<input type="number" name="items[{{ $menu->id }}][qty]" value="0" min="0" class="qty-input" readonly>
+
+4:
+what does collect() methode do in laravel and here too.
+$cart = collect($request->items ?? [])->filter(fn ($item) => $item['qty'] > 0);
+
+5:
+and this transform() method too
+$cart->transform(function ($item, $id) {
+  $food = AllFoodMenu::findOrFail($id);
+
+  return[
+    'food_id' => $food->id,
+    'name' => $food->name,
+    'price' => $food->price,
+    'qty' => $item['qty'],
+    'total' => $item['qty'] * $food->price,
+  ];
+});
+
+6:
+what does this session do
+session(['cart' => $cart]);
+
+7:
+break them down too
+public function showOrder(){
+  $cart = session('cart', collect());
+  return view('frontend.showFood', compact('cart'));
+}
+
+8:
+what do action="" and metod="post" do and the csrf too?
+<form action="{{ route('cart-food') }}" method="POST">
+  @csrf
+</form>
+
+
+9:
+break them down too
+    $cart = session('cart', []);
+
+
+    foreach($cart as $item){
+      OrderItem::create([
+        'customer_info_id' => $customer->id,
+        'food_name' => $item['name'],
+        'food_price' => $item['price'],
+        'food_qty' => $item['qty'],
+        'total_price' => $item['total'],
+      ]);
+    }
+    // Clear the cart after storing the order
+    session()->forget('cart');
+
+
+10:
+break them down too
+        @foreach($cart as $foodId => $item)
+          @php
+            $food = \App\Models\AllFoodMenu::find($foodId);
+          @endphp
+
+          <div class="menu-item">
+            <img src="{{ asset($food->photo) }}" class="menu-image">
+
+            <div class="menu-content">
+              <div class="menu-header">
+                <h3 class="menu-name">{{ $food->name }}</h3>
+                <span class="menu-price">
+                  ${{ number_format($item['total'], 2) }}
+                </span>
+              </div>
+
+              <p class="menu-description">{{ $food->description }}</p>
+
+              <p class="quantity"><strong>Quantity:</strong> {{ $item['qty'] }}</p>
+              <p class="price"><strong>Unit Price:</strong> ${{ $item['price'] }}</p>
+            </div>
+          </div>
+        @endforeach
+      </div>
+
+
+11:
+break them down too
+<tbody>
+  @foreach($order->items as $i => $item)
+    <tr>
+      <td>{{ $i + 1 }}</td>
+      <td>{{ $item->food_name }}</td>
+      <td>{{ $item->food_qty }}</td>
+      <td>${{ number_format($item->food_price, 2) }}</td>
+      <td class="right">${{ number_format($item->total_price, 2) }}</td>
+    </tr>
+  @endforeach
+</tbody>
 
 
 
+12:
+break them down too
+<div class="summary">
+
+      @php
+        $subTotal = $order->items->sum('total_price');
+      @endphp
+      <div class="summary-content">
+        <p><strong>Sub Total:</strong></p>
+        <span>${{ number_format($subTotal, 2) }}</span>
+      </div>
+
+      <div class="summary-content">
+        <p><strong>Tax:</strong></p>
+        <span>$0.00</span>
+      </div>
+
+      @php
+        $grandTotal = $order->items->sum('total_price');
+      @endphp
+
+      <div class="summary-content">
+        <p><strong>Grand Total:</strong></p>
+        <span>${{ number_format($grandTotal, 2) }}</span>
+      </div>
+    </div>
